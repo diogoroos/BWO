@@ -41,7 +41,7 @@ abstract class Entity extends PhysicsEntity {
   Sprite shadownLarge;
   Offset shadownOffset = Offset.zero;
   final RippleWaterEffect _rippleWaterEffect = RippleWaterEffect();
-  final WalkEffect2 _walkEffect = WalkEffect2();
+  final WalkEffect _walkEffect = WalkEffect();
   final DamageEffect _damageEffect = DamageEffect();
 
   Entity(double x, double y) : super(x, y) {

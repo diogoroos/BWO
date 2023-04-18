@@ -11,7 +11,7 @@ import '../server/utils/server_utils.dart';
 import '../utils/preload_assets.dart';
 import '../utils/sprite_controller.dart';
 
-class WalkEffect2 {
+class WalkEffect {
   double animSpeed = 1;
   double timeInFuture = 0;
   double timeInFutureForGrass = 0;
@@ -21,7 +21,7 @@ class WalkEffect2 {
 
   List<GrassFX> grassAnimList = [];
 
-  WalkEffect2() {
+  WalkEffect() {
     timeInFuture = GameController.time + 5;
     timeInFutureForGrass = GameController.time + 5;
   }

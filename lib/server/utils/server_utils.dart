@@ -14,7 +14,7 @@ class ServerUtils {
   static const String database = 'development'; // production | development
   static const bool isOffline = true;
 
-  static void addEntityIfNotExist(MapController2 map, Entity newEntity, {bool updateIfExist = true}) {
+  static void addEntityIfNotExist(MapController map, Entity newEntity, {bool updateIfExist = true}) {
     var foundEntity = map.entityList.firstWhere((element) => element.id == newEntity.id, orElse: () => null);
 
     if (foundEntity == null) {

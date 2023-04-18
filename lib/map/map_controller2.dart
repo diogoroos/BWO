@@ -12,8 +12,8 @@ import 'ground2.dart';
 import 'tile2.dart';
 import 'tree2.dart';
 
-class MapController2 {
-  final Map<int, Map<int, Map<int, Tile2>>> map = {};
+class MapController {
+  final Map<int, Map<int, Map<int, Tile>>> map = {};
   Player player;
 
   double widthViewPort;
@@ -66,7 +66,7 @@ class MapController2 {
     fractalType: FractalType.FBM,
   );
 
-  MapController2(Offset startPosition) {
+  MapController(Offset startPosition) {
     posX = startPosition.dx;
     posY = startPosition.dy;
     targetPos = Offset(posX, posY);

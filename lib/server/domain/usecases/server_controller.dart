@@ -8,7 +8,7 @@ import 'entities/player_data_controller.dart';
 import 'entities/tree_data_controller.dart';
 
 class ServerController {
-  MapController2 map;
+  MapController map;
   Player player;
 
   ServerRepository _repo;

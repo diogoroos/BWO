@@ -32,7 +32,7 @@ class Player extends Entity implements OnAnimationEnd {
 
   PlayerActions playerActions;
   InputController _inputController;
-  final MapController2 _map;
+  final MapController _map;
 
   Inventory _inventory;
   // ignore: unused_field

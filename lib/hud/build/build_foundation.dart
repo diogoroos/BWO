@@ -24,7 +24,7 @@ import 'build_hud.dart';
 
 class BuildFoundation {
   final Player _player;
-  final MapController2 _map;
+  final MapController _map;
 
   List<Foundation> foundationList = [];
   Foundation myFoundation;

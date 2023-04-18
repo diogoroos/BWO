@@ -17,7 +17,7 @@ import 'tools/build_tools_walls.dart';
 class BuildToolsBar extends UIElement {
   final Paint _p = Paint();
   final Player _player;
-  final MapController2 _map;
+  final MapController _map;
 
   double _boxHeight = -72;
   double _heightTarget = -72;

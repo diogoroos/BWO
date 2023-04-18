@@ -12,7 +12,7 @@ import 'ia_controller.dart';
 import 'ia_network_controller.dart';
 
 class Enemy extends Entity implements OnAnimationEnd {
-  MapController2 map;
+  MapController map;
   IAController iaController;
   bool respawn = false;
   double respawnTime = 0;

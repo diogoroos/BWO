@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../game_controller.dart';
 
-class WaterStarsEffect2 {
+class WaterStarsEffect {
   Random r = Random();
   List<Rect> starsOnWater = <Rect>[];
   double nextStarsTime = 0;
@@ -16,7 +16,7 @@ class WaterStarsEffect2 {
 
   Rect boxRect;
 
-  WaterStarsEffect2(this.boxRect) {
+  WaterStarsEffect(this.boxRect) {
     nextStarsTime = 5 + GameController.time + r.nextInt(30);
   }
 

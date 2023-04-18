@@ -9,8 +9,8 @@ import '../utils/preload_assets.dart';
 import '../utils/sprite_controller.dart';
 import 'tile2.dart';
 
-class Ground2 extends Tile2 {
-  WaterStarsEffect2 waterStarsEffect;
+class Ground2 extends Tile {
+  WaterStarsEffect waterStarsEffect;
   FoamWaterEffect foamWaterEffect;
   Sprite grass;
 
@@ -25,7 +25,7 @@ class Ground2 extends Tile2 {
     boxPaint.color = color != null ? color : tileColor;
 
     if (height < 107) {
-      waterStarsEffect = WaterStarsEffect2(boxRect);
+      waterStarsEffect = WaterStarsEffect(boxRect);
     }
     if (height >= 108 && height <= 110) {
       foamWaterEffect = FoamWaterEffect();

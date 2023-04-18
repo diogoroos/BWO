@@ -12,7 +12,7 @@ import '../furniture_build.dart';
 import '../tool_item.dart';
 
 class BuildToolsFurniture extends BuildSubToolsBar {
-  final MapController2 _map;
+  final MapController _map;
 
   int width = 16;
   int height = 16;

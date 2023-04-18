@@ -3,7 +3,7 @@ import '../../../../map/map_controller2.dart';
 import '../../../../utils/timer_helper.dart';
 
 class FoundationDataController {
-  final MapController2 _map;
+  final MapController _map;
   BuildFoundation _buildFoundation;
 
   FoundationDataController(this._map) {

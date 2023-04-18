@@ -86,7 +86,7 @@ class TapState {
     return lastPosition - currentPosition;
   }
 
-  static Offset screenToWorldPoint(Offset point, MapController2 map) {
+  static Offset screenToWorldPoint(Offset point, MapController map) {
     var midBorder = (map.border) * 16;
     var mapPos = Offset(map.posX - midBorder, map.posY - midBorder);
 
@@ -94,7 +94,7 @@ class TapState {
     return tap;
   }
 
-  static Offset worldToScreenPoint(MapController2 map) {
+  static Offset worldToScreenPoint(MapController map) {
     var midBorder = (map.border) * 16;
     var tap = Offset(map.posX - midBorder, map.posY - midBorder);
 

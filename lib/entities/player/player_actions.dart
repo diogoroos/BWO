@@ -15,7 +15,7 @@ class PlayerActions {
 
   bool isDoingAction = false;
 
-  void interactWithTrees(MapController2 map) {
+  void interactWithTrees(MapController map) {
     if (!player.isMine) {
       return;
     }

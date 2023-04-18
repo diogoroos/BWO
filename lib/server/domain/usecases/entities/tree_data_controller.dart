@@ -3,7 +3,7 @@ import '../../../../map/map_controller2.dart';
 import '../../../../map/tree2.dart';
 
 class TreeDataController {
-  MapController2 map;
+  MapController map;
 
   TreeDataController(this.map);
 

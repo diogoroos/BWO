@@ -6,7 +6,7 @@ import '../../../utils/server_utils.dart';
 
 class PlayerDataController {
   final Player _player;
-  final MapController2 _map;
+  final MapController _map;
 
   bool firstMove = true;
 

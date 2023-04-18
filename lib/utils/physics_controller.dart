@@ -6,7 +6,7 @@ import '../entities/player/player.dart';
 import '../map/map_controller2.dart';
 
 class PhysicsController {
-  final MapController2 _map;
+  final MapController _map;
 
   PhysicsController(this._map);
 

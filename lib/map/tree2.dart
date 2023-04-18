@@ -29,7 +29,7 @@ class Tree2 extends Entity {
   double _deadRotation = 0;
   double _gravityRotation = 0;
 
-  final MapController2 _map;
+  final MapController _map;
   double _deleteTime = double.infinity;
 
   Tree2(this._map, int posX, int posY, this._tileSize, this._spriteImage)

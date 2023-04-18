@@ -17,12 +17,12 @@ class GameScene extends SceneObject {
   TextPaint config = TextPaint(style: TextStyle(fontSize: 12.0, color: Colors.white, fontFamily: "Blocktopia"));
 
   Player player;
-  MapController2 mapController;
+  MapController mapController;
   PhysicsController physicsController;
   static ServerController serverController;
 
   GameScene(String playerName, Offset startPosition, String spriteFolder, int hp, int xp, int lv) {
-    mapController = MapController2(startPosition);
+    mapController = MapController(startPosition);
     serverController = ServerController(mapController);
 
     physicsController = PhysicsController(mapController);

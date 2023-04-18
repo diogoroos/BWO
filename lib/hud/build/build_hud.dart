@@ -30,7 +30,7 @@ class BuildHUD extends UIElement {
 
   BuildToolsBar _buildToolsBar;
 
-  final MapController2 _map;
+  final MapController _map;
 
   BuildHUD(this._player, this._map, HUD hudRef) : super(hudRef) {
     drawOnHUD = true;

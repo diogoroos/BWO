@@ -8,7 +8,7 @@ import '../build_subtools_bar.dart';
 import '../tool_item.dart';
 
 class BuildToolsWall extends BuildSubToolsBar {
-  final MapController2 _map;
+  final MapController _map;
 
   int selectedWall = -1;
 

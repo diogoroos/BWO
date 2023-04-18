@@ -11,7 +11,7 @@ import '../tool_item.dart';
 
 class BuildToolsFoundation extends BuildSubToolsBar {
   final Player _player;
-  final MapController2 _map;
+  final MapController _map;
 
   int width = 16;
   int height = 16;

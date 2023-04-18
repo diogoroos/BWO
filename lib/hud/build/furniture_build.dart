@@ -12,7 +12,7 @@ class FurnitureBuild {
   Rect bounds = Rect.zero;
 
   bool isValidTerrain = false;
-  final MapController2 _map;
+  final MapController _map;
 
   dynamic furnitureData;
   String furnitureId;
