@@ -30,27 +30,17 @@ class WalkEffect {
     var velocity = max(walkSpeed.dx.abs(), walkSpeed.dy.abs());
 
     if (velocity > 0) {
-      height < Ground.water
-          ? playStepSFX(velocity, "swim_1.mp3", .8, interval: .9)
-          : null;
+      height < Ground.water ? playStepSFX(velocity, "swim_1.mp3", .8, interval: .9) : null;
       height >= Ground.water && height <= Ground.lowWater - 9
           ? playStepSFX(velocity, "footstep_water_splash.mp3", .3)
           : null;
       height >= Ground.water + 9 && height <= Ground.lowWater
           ? playStepSFX(velocity, "footstep_water_splash2.mp3", .4)
           : null;
-      height >= Ground.lowSand && height <= Ground.sand
-          ? addSmokeFX(velocity, x, y)
-          : null;
-      height >= Ground.lowSand && height <= Ground.sand
-          ? playStepSFX(velocity, "footstep_sand_beech.mp3", .3)
-          : null;
-      height >= Ground.sand && height <= Ground.lowGrass
-          ? playStepSFX(velocity, "footstep_grass2.mp3", .03)
-          : null;
-      height >= Ground.lowGrass
-          ? playStepSFX(velocity, "footstep_grass1.mp3", .2)
-          : null;
+      height >= Ground.lowSand && height <= Ground.sand ? addSmokeFX(velocity, x, y) : null;
+      height >= Ground.lowSand && height <= Ground.sand ? playStepSFX(velocity, "footstep_sand_beech.mp3", .3) : null;
+      height >= Ground.sand && height <= Ground.lowGrass ? playStepSFX(velocity, "footstep_grass2.mp3", .03) : null;
+      height >= Ground.lowGrass ? playStepSFX(velocity, "footstep_grass1.mp3", .2) : null;
       height > Ground.lowGrass ? addGrassFX(velocity, x, y) : null;
     }
 
@@ -87,8 +77,7 @@ class WalkEffect {
     }
   }
 
-  void playStepSFX(double velocity, String audioName, double volume,
-      {double interval = .25}) {
+  void playStepSFX(double velocity, String audioName, double volume, {double interval = .25}) {
     if (GameController.time > timeInFutureForSoundSteps) {
       var delay = interval + ((1 - (velocity / 3)) * 0.6);
 
@@ -110,10 +99,9 @@ class GrassFX extends SpriteAnimationGroupComponent {
 
   void draw(Canvas c) {
     PreloadAssets.getGrassAnim().update(GameController.deltaTime);
-    PreloadAssets.getGrassAnim().getSprite().render(c,
-        position: Vector2(x - 7, y - 8),
-        overridePaint: p,
-        size: Vector2.all(SpriteController.spriteSize));
+    PreloadAssets.getGrassAnim()
+        .getSprite()
+        .render(c, position: Vector2(x - 7, y - 8), overridePaint: p, size: Vector2.all(SpriteController.spriteSize));
   }
 
   bool isAlive() {
@@ -148,8 +136,7 @@ class Smoke {
   void draw(Canvas c, double animSpeed) {
     _scale = lerpDouble(_scale, 20, GameController.deltaTime * animSpeed);
 
-    p.color = Color.lerp(p.color, Color.fromRGBO(150, 150, 100, 0),
-        GameController.deltaTime * animSpeed * 5);
+    p.color = Color.lerp(p.color, Color.fromRGBO(150, 150, 100, 0), GameController.deltaTime * animSpeed * 5);
 
     r = Rect.fromLTWH(
       r.left + direction.dx * animSpeed * .7,

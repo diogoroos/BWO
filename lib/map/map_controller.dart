@@ -3,8 +3,8 @@ import 'dart:ui' as ui;
 import 'package:fast_noise/fast_noise.dart';
 import 'package:flutter/material.dart';
 
-import '../entity/entity.dart';
-import '../entity/player/player.dart';
+import '../entities/entity.dart';
+import '../entities/player/player.dart';
 import '../game_controller.dart';
 import '../hud/build/build_foundation.dart';
 import '../utils/timer_helper.dart';
@@ -76,28 +76,19 @@ class MapController {
       {int tileSize = 16, int movimentType = MovimentType.move}) {
     var borderSize = (border * tileSize);
 
-    widthViewPort =
-        (screenSize.width / tileSize).roundToDouble() + (border * 2);
-    heightViewPort =
-        (screenSize.height / tileSize).roundToDouble() + (border * 2);
+    widthViewPort = (screenSize.width / tileSize).roundToDouble() + (border * 2);
+    heightViewPort = (screenSize.height / tileSize).roundToDouble() + (border * 2);
 
     // move camera
     if (movimentType == MovimentType.move) {
       posX += moveX.roundToDouble();
       posY += moveY.roundToDouble();
     } else if (movimentType == MovimentType.follow) {
-      targetPos = Offset(
-          (-moveX.roundToDouble() + screenSize.width / 2) + border * tileSize,
+      targetPos = Offset((-moveX.roundToDouble() + screenSize.width / 2) + border * tileSize,
           (-moveY.roundToDouble() + screenSize.height / 2) + border * tileSize);
 
-      posX = ui
-          .lerpDouble(
-              posX, targetPos.dx, GameController.deltaTime * cameraSpeed)
-          .roundToDouble();
-      posY = ui
-          .lerpDouble(
-              posY, targetPos.dy, GameController.deltaTime * cameraSpeed)
-          .roundToDouble();
+      posX = ui.lerpDouble(posX, targetPos.dx, GameController.deltaTime * cameraSpeed).roundToDouble();
+      posY = ui.lerpDouble(posY, targetPos.dy, GameController.deltaTime * cameraSpeed).roundToDouble();
     }
 
     c.save();
@@ -128,11 +119,7 @@ class MapController {
           }
         } else {
           if (_loopsPerCycle < _maxLoopsPerCycle) {
-            var tileHeight =
-                ((terrainNoise.getSimplexFractal2(x.toDouble(), y.toDouble()) *
-                            128) +
-                        127)
-                    .toInt();
+            var tileHeight = ((terrainNoise.getSimplexFractal2(x.toDouble(), y.toDouble()) * 128) + 127).toInt();
 
             if (map[y] == null) {
               map[y] = {x: null}; //initialize line
@@ -193,9 +180,7 @@ class MapController {
 
   void _addTrees(int x, int y, int z, int tileSize) {
     if (x % 6 == 0 && y % 6 == 0) {
-      var treeHeight =
-          ((treeNoise.getPerlin2(x.toDouble(), y.toDouble()) * 128) + 127)
-              .toInt();
+      var treeHeight = ((treeNoise.getPerlin2(x.toDouble(), y.toDouble()) * 128) + 127).toInt();
 
       if (treeHeight > 165) {
         treesGenerated++;
@@ -214,9 +199,7 @@ class MapController {
   }
 
   void addEntity(Entity newEntity) {
-    var foundEntity = _tmpEntitysToBeAdded.firstWhere(
-        (element) => element.id == newEntity.id,
-        orElse: () => null);
+    var foundEntity = _tmpEntitysToBeAdded.firstWhere((element) => element.id == newEntity.id, orElse: () => null);
 
     if (foundEntity == null) {
       _tmpEntitysToBeAdded.add(newEntity);
@@ -229,10 +212,7 @@ class MapController {
   }
 
   bool _isEntityInsideViewport(Entity entity) {
-    return (entity.posX > safeX &&
-        entity.posY > safeY &&
-        entity.posX < safeXmax &&
-        entity.posY < safeYmax);
+    return (entity.posX > safeX && entity.posY > safeY && entity.posX < safeXmax && entity.posY < safeYmax);
   }
 
   void _findEntitysOnViewport() {

@@ -5,10 +5,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '../../entity/player/player.dart';
-import '../../entity/wall/door.dart';
-import '../../entity/wall/foundation.dart';
-import '../../entity/wall/furniture.dart';
+import '../../entities/player/player.dart';
+import '../../entities/wall/door.dart';
+import '../../entities/wall/foundation.dart';
+import '../../entities/wall/furniture.dart';
 import '../../map/ground.dart';
 import '../../map/map_controller.dart';
 import '../../map/tree.dart';
@@ -47,11 +47,9 @@ class BuildFoundation {
     }
 
     //checks if there are any other too close or inside, if not proceed
-    getAllFoundationAround(x.floor(), y.floor(), w.toInt(), h.toInt())
-        .then((isAvailable) {
+    getAllFoundationAround(x.floor(), y.floor(), w.toInt(), h.toInt()).then((isAvailable) {
       if (isAvailable.body == 'true') {
-        var isValid = checkIfTerrainLocationIsValid(
-            x.floor(), y.floor(), w.toInt(), h.toInt());
+        var isValid = checkIfTerrainLocationIsValid(x.floor(), y.floor(), w.toInt(), h.toInt());
         if (!isValid) return;
 
         instantiateFoundation(foundationData);
@@ -95,8 +93,7 @@ class BuildFoundation {
 
   Future<http.Response> getAllFoundationAround(int x, int y, int w, int h) {
     print('requesting foundation location avaiablity');
-    return http
-        .get(Uri.parse('${ServerUtils.server}/foundations/at/$x/$y/$w/$h'));
+    return http.get(Uri.parse('${ServerUtils.server}/foundations/at/$x/$y/$w/$h'));
   }
 
   bool isInsideSpecialArea(Rectangle r1, Rectangle r2) {
@@ -139,8 +136,7 @@ class BuildFoundation {
   bool isValidAreaOnFoundation(double x, double y, double w, double h) {
     if (myFoundation == null) return false;
 
-    var isInside =
-        myFoundation.isInsideFoundation(x, y, wPoint: w - 1, hPoint: h);
+    var isInside = myFoundation.isInsideFoundation(x, y, wPoint: w - 1, hPoint: h);
     var isIntersectingWall = _isAreaIntersectingWalls(x, y, w, h);
     var isIntersectingFurniture = _isAreaIntersectingFurnitures(x, y, w, h);
 
@@ -177,15 +173,13 @@ class BuildFoundation {
 
     if (foundationExists != null) {
       //do not update self foundation while in build mode
-      if (foundationExists == myFoundation &&
-          BuildHUD.buildBtState == BuildButtonState.build) {
+      if (foundationExists == myFoundation && BuildHUD.buildBtState == BuildButtonState.build) {
         updateBounds(foundationExists, foundationData);
         replaceWalls(foundationExists, foundationData['walls']);
         replaceFloors(foundationExists, foundationData['floors']);
         replaceFurniture(foundationExists, foundationData['furnitures']);
       } else {
-        print(
-            'ignore update while in build mode ${BuildHUD.buildBtState != BuildButtonState.build}');
+        print('ignore update while in build mode ${BuildHUD.buildBtState != BuildButtonState.build}');
       }
     } else {
       instantiateFoundation(foundationData);
@@ -224,10 +218,7 @@ class BuildFoundation {
     var y = currentFoundation.foundationData['y'];
     var w = currentFoundation.foundationData['w'];
     var h = currentFoundation.foundationData['h'];
-    if (x != newData['x'] ||
-        y != newData['y'] ||
-        w != newData['w'] ||
-        h != newData['h']) {
+    if (x != newData['x'] || y != newData['y'] || w != newData['w'] || h != newData['h']) {
       currentFoundation.setup(newData);
     }
     t.logDelayPassed('updateBounds:');

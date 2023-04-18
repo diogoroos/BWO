@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../entity/player/player.dart';
+import '../entities/player/player.dart';
 import '../map/map_controller.dart';
 
 class PhysicsController {
@@ -26,10 +26,10 @@ class PhysicsController {
             var maxAmountOfTimesToPushPlayerOutPerLoop = 10;
 
             while (maxAmountOfTimesToPushPlayerOutPerLoop > 0) {
-              var r1 = Rectangle(e1.collisionBox.left, e1.collisionBox.top,
-                  e1.collisionBox.width, e1.collisionBox.height);
-              var r2 = Rectangle(e2.collisionBox.left, e2.collisionBox.top,
-                  e2.collisionBox.width, e2.collisionBox.height);
+              var r1 =
+                  Rectangle(e1.collisionBox.left, e1.collisionBox.top, e1.collisionBox.width, e1.collisionBox.height);
+              var r2 =
+                  Rectangle(e2.collisionBox.left, e2.collisionBox.top, e2.collisionBox.width, e2.collisionBox.height);
 
               if (r1.intersects(r2)) {
                 if (e2.isCollisionTrigger == false) {

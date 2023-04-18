@@ -1,8 +1,8 @@
 import 'package:flame/extensions.dart';
 import 'package:flame/sprite.dart';
 
-import '../../entity/player/player.dart';
-import '../../entity/wall/wall.dart';
+import '../../entities/player/player.dart';
+import '../../entities/wall/wall.dart';
 import '../../game_controller.dart';
 import '../../map/map_controller.dart';
 import '../../ui/hud.dart';
@@ -52,25 +52,19 @@ class BuildHUD extends UIElement {
   }
 
   void draw(Canvas c) {
-    if (_buildSprite == null ||
-        _buildSpriteOpen == null ||
-        _deleteSprite == null) return;
+    if (_buildSprite == null || _buildSpriteOpen == null || _deleteSprite == null) return;
 
     bPos = Vector2(10, GameController.screenSize.height - 176);
     if (buildBtState == BuildButtonState.build) {
-      _buildSpriteOpen.render(c,
-          position: bPos, size: Vector2.all(SpriteController.spriteSize * 2));
+      _buildSpriteOpen.render(c, position: bPos, size: Vector2.all(SpriteController.spriteSize * 2));
     } else if (buildBtState == BuildButtonState.delete) {
-      _deleteSprite.render(c,
-          position: bPos, size: Vector2.all(SpriteController.spriteSize * 2));
+      _deleteSprite.render(c, position: bPos, size: Vector2.all(SpriteController.spriteSize * 2));
     } else {
-      _buildSprite.render(c,
-          position: bPos, size: Vector2.all(SpriteController.spriteSize * 2));
+      _buildSprite.render(c, position: bPos, size: Vector2.all(SpriteController.spriteSize * 2));
     }
     _handlerBuildButtonClick();
 
-    if (buildBtState == BuildButtonState.build ||
-        buildBtState == BuildButtonState.delete) {
+    if (buildBtState == BuildButtonState.build || buildBtState == BuildButtonState.delete) {
       _map.buildFoundation.myFoundation?.drawBuildArea(c);
     }
 
@@ -81,13 +75,10 @@ class BuildHUD extends UIElement {
       if (TapState.clickedAt(sRect)) {
         _handlerWallLevelButtonClick();
       }
-      _switchLevelButtonSprite?.render(c,
-          position: sPos, size: Vector2.all(SpriteController.spriteSize * 2));
+      _switchLevelButtonSprite?.render(c, position: sPos, size: Vector2.all(SpriteController.spriteSize * 2));
       var isBuildingMode = buildBtState != BuildButtonState.none;
-      _map.buildFoundation.myFoundation
-          ?.switchWallHeightAll(isBuildingMode: isBuildingMode);
-      _map.buildFoundation.myFoundation
-          ?.switchDoor(isBuildingMode: isBuildingMode);
+      _map.buildFoundation.myFoundation?.switchWallHeightAll(isBuildingMode: isBuildingMode);
+      _map.buildFoundation.myFoundation?.switchDoor(isBuildingMode: isBuildingMode);
     }
 
     _updateWallLevelSprite();

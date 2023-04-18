@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:socket_io_client/socket_io_client.dart' as io;
 
-import '../../../entity/player/player.dart';
+import '../../../entities/player/player.dart';
 import '../../domain/repositories/server_repository.dart';
 import '../../utils/server_utils.dart';
 
@@ -17,12 +17,8 @@ class SocketIoRepository implements ServerRepository {
 
     _player = player;
 
-    socket = io.io(
-        ServerUtils.server,
-        io.OptionBuilder()
-            .setTransports(['websocket'])
-            .disableAutoConnect()
-            .build());
+    socket = io.io(ServerUtils.server, io.OptionBuilder().setTransports(['websocket']).disableAutoConnect().build());
+    socket.opts['path'] = '';
     socket.connect();
 
     socket.onConnect((data) {

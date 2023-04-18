@@ -1,9 +1,9 @@
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 
-import '../entity/items/item_database.dart';
-import '../entity/items/items.dart';
-import '../entity/player/player.dart';
+import '../entities/items/item_database.dart';
+import '../entities/items/items.dart';
+import '../entities/player/player.dart';
 import '../game_controller.dart';
 import '../ui/hud.dart';
 import '../ui/ui_element.dart';
@@ -11,7 +11,7 @@ import '../utils/sprite_controller.dart';
 import '../utils/tap_state.dart';
 
 class Inventory extends UIElement {
-  List<Item> itemList = [];
+  List<Items> itemList = [];
 
   final double _margin = 60;
 
@@ -19,9 +19,7 @@ class Inventory extends UIElement {
   final int _maxHorizontalSlots = 2;
   final double _spaceBetweenSlots = 2;
 
-  final TextPaint _config = TextPaint(
-      style: TextStyle(
-          fontSize: 11.0, color: Colors.white, fontFamily: "Blocktopia"));
+  final TextPaint _config = TextPaint(style: TextStyle(fontSize: 11.0, color: Colors.white, fontFamily: "Blocktopia"));
   final Player _player;
 
   Sprite _bagSprite;
@@ -29,8 +27,8 @@ class Inventory extends UIElement {
 
   Inventory(this._player, HUD hudRef) : super(hudRef) {
     drawOnHUD = true;
-    addItem(Item(0, 0, 0, itemListDatabase[2]));
-    addItem(Item(0, 0, 0, itemListDatabase[4]));
+    addItem(Items(0, 0, 0, itemListDatabase[2]));
+    addItem(Items(0, 0, 0, itemListDatabase[4]));
     loadSprite();
   }
 
@@ -52,7 +50,7 @@ class Inventory extends UIElement {
     return itemList.length;
   }
 
-  bool addItem(Item item) {
+  bool addItem(Items item) {
     var itemAdded = false;
 
     var found = false;
@@ -83,8 +81,7 @@ class Inventory extends UIElement {
     var maxWidth = _maxHorizontalSlots * 32;
     for (var i = 0; i < _maxSlots; i++) {
       var xSlot = (i % _maxHorizontalSlots) * (32 + _spaceBetweenSlots);
-      var ySlot =
-          ((i * 32) / maxWidth).floorToDouble() * (32 + _spaceBetweenSlots);
+      var ySlot = ((i * 32) / maxWidth).floorToDouble() * (32 + _spaceBetweenSlots);
       var maxYSlot = (_maxSlots * 32) / maxWidth * (32 + _spaceBetweenSlots);
 
       var slotRect = Rect.fromLTWH(
@@ -108,8 +105,7 @@ class Inventory extends UIElement {
           Vector2(slotRect.left + 2, slotRect.top + 1),
         );
 
-        if (GameController.tapState == TapState.down &&
-            TapState.instersect(slotRect)) {
+        if (GameController.tapState == TapState.down && TapState.instersect(slotRect)) {
           print("Using Item ${itemList[i].proprieties.name}");
           itemList[i].use(_player);
         }
@@ -130,11 +126,9 @@ class Inventory extends UIElement {
     if (_bagSprite != null && _bagSpriteOpen != null) {
       var bPos = Vector2(10, GameController.screenSize.height - 128);
       if (isOpen) {
-        _bagSpriteOpen.render(c,
-            position: bPos, size: Vector2.all(SpriteController.spriteSize * 2));
+        _bagSpriteOpen.render(c, position: bPos, size: Vector2.all(SpriteController.spriteSize * 2));
       } else {
-        _bagSprite.render(c,
-            position: bPos, size: Vector2.all(SpriteController.spriteSize * 2));
+        _bagSprite.render(c, position: bPos, size: Vector2.all(SpriteController.spriteSize * 2));
       }
 
       var bRect = Rect.fromLTWH(bPos.x, bPos.y, 32, 32);

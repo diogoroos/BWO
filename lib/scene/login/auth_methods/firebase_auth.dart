@@ -4,12 +4,10 @@ import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
+// import 'package:firebase_database/firebase_database.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../game_controller.dart';
-import '../../../server/utils/server_utils.dart';
-import '../../../utils/toast_message.dart';
 import '../../character_creation/character_creation.dart';
 import '../../game_scene.dart';
 import '../auth.dart';
@@ -32,7 +30,8 @@ class FirebaseAuth implements AuthService {
       print('account $account');
       mAccount = account;
 
-      _getVersionNumber();
+      // _getVersionNumber();
+      _createOrReplaceAndLogUser();
     });
     _googleSignIn.signInSilently(); //auto login
     //logout(); // force login
@@ -62,17 +61,16 @@ class FirebaseAuth implements AuthService {
   }
 
   void _getVersionNumber() async {
-    var data = FirebaseDatabase.instance.ref().child('version');
+    // var data = FirebaseDatabase.instance.ref().child('version');
 
-    data.once().then((event) {
-      if (event.snapshot.value == appVersion) {
-        _createOrReplaceAndLogUser();
-      } else {
-        Toast.add(
-            "You are out of date. The new version is: ${event.snapshot.value}");
-        logout();
-      }
-    });
+    // data.once().then((event) {
+    //   if (event.snapshot.value == appVersion) {
+    //     _createOrReplaceAndLogUser();
+    //   } else {
+    //     Toast.add("You are out of date. The new version is: ${event.snapshot.value}");
+    //     logout();
+    //   }
+    // });
   }
 
   //firebase
@@ -104,51 +102,64 @@ class FirebaseAuth implements AuthService {
   }
 
   void retriveCharacterData(String characterName) async {
-    var data = FirebaseDatabase.instance
-        .ref()
-        .child('${ServerUtils.database}/state/players/$characterName');
+    var usersCollection = await firestore.collection('users').doc(mAccount.id).get();
+    if (usersCollection != null && usersCollection.data() != null) {
+      print('Retrieved character information: ${usersCollection.data()}');
+      var data = usersCollection.data();
+      var pName = data['name'] ?? data['characterName'] ?? 'Player';
+      var pX = num.parse(data['x'] ?? '0.0'.toString());
+      var pY = num.parse(data['y'] ?? '0.0'.toString());
+      var pSprite = data['sprite'] ?? 'human/male1';
+      var pHp = int.parse(data['hp'] ?? 10.toString());
+      var pXp = int.parse(data['xp'] ?? 10.toString());
+      var pLv = int.parse(data['lv'] ?? 10.toString());
 
-    data.once().then((event) {
-      if (event.snapshot.value != null) {
-        print('Retrieved character information: ${event.snapshot.value}');
-        var value = event.snapshot.value;
-        Map<String, dynamic> data = value as Map;
-        var pName = data['name'];
-        var pX = double.parse(data['x'].toString());
-        var pY = double.parse(data['y'].toString());
-        var pSprite = data['sprite'];
-        var pHp = int.parse(data['hp'].toString());
-        var pXp = int.parse(data['xp'].toString());
-        var pLv = int.parse(data['lv'].toString());
+      print('creating player $pName on position: $pX, $pY');
 
-        print('creating player $pName on position: $pX, $pY');
+      GameController.currentScene = GameScene(pName, Offset(pX, pY), pSprite, pHp, pXp, pLv);
+    } else {
+      print('Character not found, moving to character creation windows.');
+      GameController.currentScene = CharacterCreation(this);
+    }
 
-        GameController.currentScene =
-            GameScene(pName, Offset(pX, pY), pSprite, pHp, pXp, pLv);
-      } else {
-        print('Character not found, moving to character creation windows.');
-        GameController.currentScene = CharacterCreation(this);
-      }
-    });
+    // data.once().then((event) {
+    //   if (event.snapshot.value != null) {
+    //     print('Retrieved character information: ${event.snapshot.value}');
+    //     var value = event.snapshot.value;
+    //     Map<String, dynamic> data = value as Map;
+    //     var pName = data['name'];
+    //     var pX = double.parse(data['x'].toString());
+    //     var pY = double.parse(data['y'].toString());
+    //     var pSprite = data['sprite'];
+    //     var pHp = int.parse(data['hp'].toString());
+    //     var pXp = int.parse(data['xp'].toString());
+    //     var pLv = int.parse(data['lv'].toString());
+
+    //     print('creating player $pName on position: $pX, $pY');
+
+    //     GameController.currentScene = GameScene(pName, Offset(pX, pY), pSprite, pHp, pXp, pLv);
+    //   } else {
+    //     print('Character not found, moving to character creation windows.');
+    //     GameController.currentScene = CharacterCreation(this);
+    //   }
+    // });
   }
 
   Future<bool> isNameAvailable(String characterName) async {
-    var data = FirebaseDatabase.instance
-        .ref()
-        .child('${ServerUtils.database}/state/players/$characterName');
+    // var data = FirebaseDatabase.instance.ref().child('${ServerUtils.database}/state/players/$characterName');
 
-    var isAvaiable = false;
+    // var isAvaiable = false;
 
-    await data.once().then((event) {
-      if (event.snapshot.value == null) {
-        isAvaiable = true;
-      } else {
-        Toast.add(
-            'Character name already taken: ${(event.snapshot.value as Map)["name"]}');
-      }
-    });
-    isAvaiable = true;
-    return isAvaiable;
+    // await data.once().then((event) {
+    //   if (event.snapshot.value == null) {
+    //     isAvaiable = true;
+    //   } else {
+    //     Toast.add('Character name already taken: ${(event.snapshot.value as Map)["name"]}');
+    //   }
+    // });
+    // isAvaiable = true;
+    // return isAvaiable;
+    return true;
   }
 
   Future createCharacterForUser(String characterName) async {

@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import '../../entity/player/player.dart';
+import '../../entities/player/player.dart';
 import '../../game_controller.dart';
 import '../../map/map_controller.dart';
 import '../../ui/hud.dart';
@@ -31,12 +31,10 @@ class BuildToolsBar extends UIElement {
   BuildToolsBar(this._player, this._map, HUD hudRef) : super(hudRef) {
     drawOnHUD = true;
 
-    buttonList.add(
-        ToolItem("foundation", "Foundation", hudRef, onFoundationBtPressed));
+    buttonList.add(ToolItem("foundation", "Foundation", hudRef, onFoundationBtPressed));
     buttonList.add(ToolItem("wall", "Wall", hudRef, onWallButtonPressed));
     buttonList.add(ToolItem("floor_icon", "Floor", hudRef, onTileFloorPressed));
-    buttonList
-        .add(ToolItem("furniture", "Furniture", hudRef, onFurniturePressed));
+    buttonList.add(ToolItem("furniture", "Furniture", hudRef, onFurniturePressed));
     buttonList.add(ToolItem("door1", "Door", hudRef, onDoorPressed));
     buttonList.add(ToolItem("config", "Config", hudRef, onConfigPressed));
   }
@@ -51,8 +49,7 @@ class BuildToolsBar extends UIElement {
       GameController.screenSize.width - 20,
       GameController.screenSize.height + 15,
     );
-    var rBounds = RRect.fromLTRBR(bounds.left, bounds.top, bounds.right,
-        bounds.bottom, Radius.circular(15));
+    var rBounds = RRect.fromLTRBR(bounds.left, bounds.top, bounds.right, bounds.bottom, Radius.circular(15));
 
     openCloseAnimation();
 
@@ -63,8 +60,7 @@ class BuildToolsBar extends UIElement {
   }
 
   void openCloseAnimation() {
-    _boxHeight =
-        lerpDouble(_boxHeight, _heightTarget, GameController.deltaTime * 5);
+    _boxHeight = lerpDouble(_boxHeight, _heightTarget, GameController.deltaTime * 5);
   }
 
   // ignore: avoid_positional_boolean_parameters

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../entity/enemys/enemy.dart';
-import '../../../../entity/enemys/skull.dart';
+import '../../../../entities/enemys/skull.dart';
+import '../../../../entities/enemys/enemy.dart';
 import '../../../../map/map_controller.dart';
 import '../../../../utils/timer_helper.dart';
 import '../../../utils/server_utils.dart';
@@ -31,12 +31,9 @@ class EnemyDataController {
           var targetId = enemy['target'];
 
           if (name == 'Skull') {
-            var skull =
-                Skull(x, y, _map, name, enemyId, moveTo: Offset(newX, newY));
+            var skull = Skull(x, y, _map, name, enemyId, moveTo: Offset(newX, newY));
 
-            var playerFound = _map.entityList.firstWhere(
-                (element) => element.id == targetId,
-                orElse: () => null);
+            var playerFound = _map.entityList.firstWhere((element) => element.id == targetId, orElse: () => null);
             skull.iaController.target = playerFound;
 
             ServerUtils.addEntityIfNotExist(_map, skull);
@@ -66,13 +63,10 @@ class EnemyDataController {
       var targetId = enemy['target'];
 
       if (name == 'Skull') {
-        var skull =
-            Skull(x, y, _map, name, enemyId, moveTo: Offset(newX, newY));
+        var skull = Skull(x, y, _map, name, enemyId, moveTo: Offset(newX, newY));
         spawnedEntitys.add(skull);
 
-        var playerFound = _map.entityList.firstWhere(
-            (element) => element.id == targetId,
-            orElse: () => null);
+        var playerFound = _map.entityList.firstWhere((element) => element.id == targetId, orElse: () => null);
         skull.iaController.target = playerFound;
 
         ServerUtils.addEntityIfNotExist(_map, skull);
@@ -94,22 +88,16 @@ class EnemyDataController {
       // var x = double.parse(enemyData['x'].toString());
       // var y = double.parse(enemyData['y'].toString());
 
-      var damage = int.parse(
-          (enemyData['damage'] != null ? enemyData['damage'] : 0).toString());
+      var damage = int.parse((enemyData['damage'] != null ? enemyData['damage'] : 0).toString());
 
-      var targetHp = int.parse(
-          (enemyData['target_hp'] != null ? enemyData['target_hp'] : 0)
-              .toString());
+      var targetHp = int.parse((enemyData['target_hp'] != null ? enemyData['target_hp'] : 0).toString());
 
-      var playerFound = _map.entityList
-          .firstWhere((element) => element.id == targetId, orElse: () => null);
+      var playerFound = _map.entityList.firstWhere((element) => element.id == targetId, orElse: () => null);
 
-      var entityFound = _map.entityList
-          .firstWhere((element) => element.id == enemyId, orElse: () => null);
+      var entityFound = _map.entityList.firstWhere((element) => element.id == enemyId, orElse: () => null);
 
       if (entityFound is Enemy && playerFound != null) {
-        entityFound.iaController
-            .attackTarget(playerFound, damage: damage, targetHp: targetHp);
+        entityFound.iaController.attackTarget(playerFound, damage: damage, targetHp: targetHp);
       }
     });
     t.logDelayPassed('onEnemyTargetingPlayer:');
@@ -119,9 +107,7 @@ class EnemyDataController {
     var t = TimerHelper();
     for (var entityOnMap in _map.entitysOnViewport) {
       if (entityOnMap is Enemy) {
-        var foundEntity = spawnedEntitys.firstWhere(
-            (element) => element.id == entityOnMap.id,
-            orElse: () => null);
+        var foundEntity = spawnedEntitys.firstWhere((element) => element.id == entityOnMap.id, orElse: () => null);
 
         if (foundEntity == null) {
           entityOnMap.destroy();

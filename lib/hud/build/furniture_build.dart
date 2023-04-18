@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../entity/wall/door.dart';
-import '../../entity/wall/furniture.dart';
+import '../../entities/wall/door.dart';
+import '../../entities/wall/furniture.dart';
 import '../../map/map_controller.dart';
 import '../../utils/tap_state.dart';
 

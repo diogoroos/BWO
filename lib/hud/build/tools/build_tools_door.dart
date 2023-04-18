@@ -1,6 +1,6 @@
 import 'package:flame/extensions.dart';
 
-import '../../../entity/wall/door.dart';
+import '../../../entities/wall/door.dart';
 import '../../../game_controller.dart';
 import '../../../map/map_controller.dart';
 import '../../../ui/hud.dart';
@@ -39,12 +39,10 @@ class BuildToolsDoor extends BuildSubToolsBar {
     _furnitureBuild?.drawCollisionArea(c);
 
     if (GameController.tapState == TapState.pressing) {
-      var tapOnWorld =
-          TapState.screenToWorldPoint(TapState.currentPosition, _map) / 16;
+      var tapOnWorld = TapState.screenToWorldPoint(TapState.currentPosition, _map) / 16;
       var tapOnScreen = TapState.currentPosition;
 
-      var verticalBarButtons =
-          Rect.fromLTWH(0, GameController.screenSize.height - 235, 48, 235);
+      var verticalBarButtons = Rect.fromLTWH(0, GameController.screenSize.height - 235, 48, 235);
 
       if (tapOnScreen.dy < GameController.screenSize.height - 200 &&
           TapState.currentClickingAtInside(verticalBarButtons) == false) {
@@ -73,8 +71,8 @@ class BuildToolsDoor extends BuildSubToolsBar {
     var x = posX - (width / 2.0).floor();
     var y = posY - (height / 2.0).floor();
 
-    var isValid = _map.buildFoundation.isValidAreaOnFoundation(
-        x.toDouble(), y.toDouble(), width.toDouble(), height.toDouble());
+    var isValid =
+        _map.buildFoundation.isValidAreaOnFoundation(x.toDouble(), y.toDouble(), width.toDouble(), height.toDouble());
 
     dynamic doorData = {
       'id': _selectedDoor,

@@ -1,7 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 
-import '../../../entity/player/player.dart';
+import '../../../entities/player/player.dart';
 import '../../../game_controller.dart';
 import '../../../map/map_controller.dart';
 import '../../../ui/hud.dart';
@@ -31,12 +31,10 @@ class BuildToolsFoundation extends BuildSubToolsBar {
     super.draw(c);
 
     if (GameController.tapState == TapState.pressing) {
-      var tapOnWorld =
-          TapState.screenToWorldPoint(TapState.currentPosition, _map) / 16;
+      var tapOnWorld = TapState.screenToWorldPoint(TapState.currentPosition, _map) / 16;
       var tapOnScreen = TapState.currentPosition;
 
-      var verticalBarButtons =
-          Rect.fromLTWH(0, GameController.screenSize.height - 235, 48, 235);
+      var verticalBarButtons = Rect.fromLTWH(0, GameController.screenSize.height - 235, 48, 235);
 
       if (tapOnScreen.dy < GameController.screenSize.height - 200 &&
           TapState.currentClickingAtInside(verticalBarButtons) == false) {
@@ -88,8 +86,7 @@ class BuildToolsFoundation extends BuildSubToolsBar {
 
     _map.buildFoundation.updateOrInstantiateFoundation(foundationData);
 
-    var isValid =
-        _map.buildFoundation.checkIfTerrainLocationIsValid(x, y, width, height);
+    var isValid = _map.buildFoundation.checkIfTerrainLocationIsValid(x, y, width, height);
 
     _map.buildFoundation.myFoundation.isValidTerrain = isValid;
 

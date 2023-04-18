@@ -20,8 +20,7 @@ class Ground extends Tile {
   static const sand = 118;
   static const lowGrass = 140;
 
-  Ground(int posX, int posY, int height, int size, Color color)
-      : super(posX, posY, height, size, color) {
+  Ground(int posX, int posY, int height, int size, Color color) : super(posX, posY, height, size, color) {
     var tileColor = getTileDetailsBasedOnHight(this.height);
     boxPaint.color = color != null ? color : tileColor;
 
@@ -35,16 +34,13 @@ class Ground extends Tile {
 
   void draw(Canvas c) {
     if (height >= 108 && height <= 110) {
-      boxPaint.color =
-          foamWaterEffect.getFoamColor(height, posX, posY); //Colors.blue[200];
+      boxPaint.color = foamWaterEffect.getFoamColor(height, posX, posY); //Colors.blue[200];
     }
 
     c.drawRect(boxRect, boxPaint);
 
     if (grass != null) {
-      grass.render(c,
-          position: Vector2(boxRect.left, boxRect.top),
-          size: Vector2.all(SpriteController.spriteSize * 1));
+      grass.render(c, position: Vector2(boxRect.left, boxRect.top), size: Vector2.all(SpriteController.spriteSize * 1));
     }
 
     if (height < 107) {
@@ -102,8 +98,7 @@ class Ground extends Tile {
     } else if (heightLvl < 195) {
       return Color.fromRGBO(82, green, 46, 1);
     } else {
-      return Color.fromRGBO(
-          heightLvl - 130, heightLvl - 130, heightLvl - 130, 1);
+      return Color.fromRGBO(heightLvl - 130, heightLvl - 130, heightLvl - 130, 1);
     }
   }
 }

@@ -1,4 +1,4 @@
-name: BWO
+name: rashyt
 description: An infinity procedural Game With Firebase
 
 # The following line prevents the package from being accidentally published to
@@ -37,12 +37,12 @@ dependencies:
   package_info_plus: ^3.0.0
   http: ^0.13.5
   
-  google_sign_in: ^5.4.2
-  firebase_core: ^2.0.0
+  google_sign_in: ^6.1.0
+  firebase_core: ^2.9.0
   firebase_analytics: ^10.0.1
-  firebase_auth: ^4.0.1
+  firebase_auth: ^4.4.1
   cloud_firestore: ^4.0.1
-  firebase_database: ^10.0.1
+  #firebase_database: ^10.0.1
   
 
 

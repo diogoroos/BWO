@@ -8,6 +8,8 @@ class PreloadAssets {
   static Sprite _stomachBack;
   static SpriteAnimation _grassAnim;
 
+  static Sprite _human;
+
   static Sprite _backPaper;
   static Sprite _backPaper1;
 
@@ -44,6 +46,7 @@ class PreloadAssets {
     _stomachBack = await Sprite.load("ui/stomach_back.png");
 
     print("Loading sprites Chars Assets");
+    _human = await Sprite.load("human/male1/walk/forward.png");
 
     print("Loading sprites Trees Assets");
 
@@ -52,44 +55,25 @@ class PreloadAssets {
     _trees['tree03'] = await SpriteBatch.load('trees/tree03.png');
     _trees['tree04'] = await SpriteBatch.load('trees/tree04.png');
 
-    _enviromentSpriteList["floor1"] =
-        await Sprite.load("enviroment/floor1.png");
-    _enviromentSpriteList["floor2"] =
-        await Sprite.load("enviroment/floor2.png");
-    _enviromentSpriteList["floor3"] =
-        await Sprite.load("enviroment/floor3.png");
-    _enviromentSpriteList["floor4"] =
-        await Sprite.load("enviroment/floor4.png");
-    _enviromentSpriteList["floor5"] =
-        await Sprite.load("enviroment/floor5.png");
-    _enviromentSpriteList["grass1"] =
-        await Sprite.load("enviroment/grass1.png");
-    _enviromentSpriteList["grass2"] =
-        await Sprite.load("enviroment/grass2.png");
-    _enviromentSpriteList["grass3"] =
-        await Sprite.load("enviroment/grass3.png");
-    _enviromentSpriteList["grass4"] =
-        await Sprite.load("enviroment/grass4.png");
-    _enviromentSpriteList["grass5"] =
-        await Sprite.load("enviroment/grass5.png");
-    _enviromentSpriteList["grass6"] =
-        await Sprite.load("enviroment/grass6.png");
-    _enviromentSpriteList["grass7"] =
-        await Sprite.load("enviroment/grass7.png");
-    _enviromentSpriteList["grass8"] =
-        await Sprite.load("enviroment/grass8.png");
-    _enviromentSpriteList["grass9"] =
-        await Sprite.load("enviroment/grass9.png");
-    _enviromentSpriteList["grass10"] =
-        await Sprite.load("enviroment/grass10.png");
-    _enviromentSpriteList["grass11"] =
-        await Sprite.load("enviroment/grass11.png");
-    _enviromentSpriteList["grass12"] =
-        await Sprite.load("enviroment/grass12.png");
-    _enviromentSpriteList["grass13"] =
-        await Sprite.load("enviroment/grass13.png");
-    _enviromentSpriteList["grass14"] =
-        await Sprite.load("enviroment/grass14.png");
+    _enviromentSpriteList["floor1"] = await Sprite.load("enviroment/floor1.png");
+    _enviromentSpriteList["floor2"] = await Sprite.load("enviroment/floor2.png");
+    _enviromentSpriteList["floor3"] = await Sprite.load("enviroment/floor3.png");
+    _enviromentSpriteList["floor4"] = await Sprite.load("enviroment/floor4.png");
+    _enviromentSpriteList["floor5"] = await Sprite.load("enviroment/floor5.png");
+    _enviromentSpriteList["grass1"] = await Sprite.load("enviroment/grass1.png");
+    _enviromentSpriteList["grass2"] = await Sprite.load("enviroment/grass2.png");
+    _enviromentSpriteList["grass3"] = await Sprite.load("enviroment/grass3.png");
+    _enviromentSpriteList["grass4"] = await Sprite.load("enviroment/grass4.png");
+    _enviromentSpriteList["grass5"] = await Sprite.load("enviroment/grass5.png");
+    _enviromentSpriteList["grass6"] = await Sprite.load("enviroment/grass6.png");
+    _enviromentSpriteList["grass7"] = await Sprite.load("enviroment/grass7.png");
+    _enviromentSpriteList["grass8"] = await Sprite.load("enviroment/grass8.png");
+    _enviromentSpriteList["grass9"] = await Sprite.load("enviroment/grass9.png");
+    _enviromentSpriteList["grass10"] = await Sprite.load("enviroment/grass10.png");
+    _enviromentSpriteList["grass11"] = await Sprite.load("enviroment/grass11.png");
+    _enviromentSpriteList["grass12"] = await Sprite.load("enviroment/grass12.png");
+    _enviromentSpriteList["grass13"] = await Sprite.load("enviroment/grass13.png");
+    _enviromentSpriteList["grass14"] = await Sprite.load("enviroment/grass14.png");
 
     _wallSpriteList["wall1"] = await Sprite.load("walls/wall1.png");
     _wallSpriteList["wall2"] = await Sprite.load("walls/wall2.png");
@@ -109,14 +93,12 @@ class PreloadAssets {
     _wallSpriteList["wall13_4"] = await Sprite.load("walls/wall13_4.png");
     _wallSpriteList["wall13_5"] = await Sprite.load("walls/wall13_5.png");
     _wallSpriteList["wall13_left"] = await Sprite.load("walls/wall13_left.png");
-    _wallSpriteList["wall13_right"] =
-        await Sprite.load("walls/wall13_right.png");
+    _wallSpriteList["wall13_right"] = await Sprite.load("walls/wall13_right.png");
     _wallSpriteList["wall14"] = await Sprite.load("walls/wall14.png");
     _wallSpriteList["wall14_2"] = await Sprite.load("walls/wall14_2.png");
     _wallSpriteList["wall14_3"] = await Sprite.load("walls/wall14_3.png");
     _wallSpriteList["wall14_left"] = await Sprite.load("walls/wall14_left.png");
-    _wallSpriteList["wall14_right"] =
-        await Sprite.load("walls/wall14_right.png");
+    _wallSpriteList["wall14_right"] = await Sprite.load("walls/wall14_right.png");
     _wallSpriteList["low_wall1"] = await Sprite.load("walls/low_wall1.png");
     _wallSpriteList["low_wall2"] = await Sprite.load("walls/low_wall2.png");
     _wallSpriteList["low_wall3"] = await Sprite.load("walls/low_wall3.png");
@@ -130,27 +112,17 @@ class PreloadAssets {
     _wallSpriteList["low_wall11"] = await Sprite.load("walls/low_wall11.png");
     _wallSpriteList["low_wall12"] = await Sprite.load("walls/low_wall12.png");
     _wallSpriteList["low_wall13"] = await Sprite.load("walls/low_wall13.png");
-    _wallSpriteList["low_wall13_2"] =
-        await Sprite.load("walls/low_wall13_2.png");
-    _wallSpriteList["low_wall13_3"] =
-        await Sprite.load("walls/low_wall13_3.png");
-    _wallSpriteList["low_wall13_4"] =
-        await Sprite.load("walls/low_wall13_4.png");
-    _wallSpriteList["low_wall13_5"] =
-        await Sprite.load("walls/low_wall13_5.png");
-    _wallSpriteList["low_wall13_left"] =
-        await Sprite.load("walls/low_wall13_left.png");
-    _wallSpriteList["low_wall13_right"] =
-        await Sprite.load("walls/low_wall13_right.png");
+    _wallSpriteList["low_wall13_2"] = await Sprite.load("walls/low_wall13_2.png");
+    _wallSpriteList["low_wall13_3"] = await Sprite.load("walls/low_wall13_3.png");
+    _wallSpriteList["low_wall13_4"] = await Sprite.load("walls/low_wall13_4.png");
+    _wallSpriteList["low_wall13_5"] = await Sprite.load("walls/low_wall13_5.png");
+    _wallSpriteList["low_wall13_left"] = await Sprite.load("walls/low_wall13_left.png");
+    _wallSpriteList["low_wall13_right"] = await Sprite.load("walls/low_wall13_right.png");
     _wallSpriteList["low_wall14"] = await Sprite.load("walls/low_wall14.png");
-    _wallSpriteList["low_wall14_2"] =
-        await Sprite.load("walls/low_wall14_2.png");
-    _wallSpriteList["low_wall14_3"] =
-        await Sprite.load("walls/low_wall14_3.png");
-    _wallSpriteList["low_wall14_left"] =
-        await Sprite.load("walls/low_wall14_left.png");
-    _wallSpriteList["low_wall14_right"] =
-        await Sprite.load("walls/low_wall14_right.png");
+    _wallSpriteList["low_wall14_2"] = await Sprite.load("walls/low_wall14_2.png");
+    _wallSpriteList["low_wall14_3"] = await Sprite.load("walls/low_wall14_3.png");
+    _wallSpriteList["low_wall14_left"] = await Sprite.load("walls/low_wall14_left.png");
+    _wallSpriteList["low_wall14_right"] = await Sprite.load("walls/low_wall14_right.png");
 
     _roofsSpriteList["roof1"] = await Sprite.load("roofs/roof1.png");
     _roofsSpriteList["roof2"] = await Sprite.load("roofs/roof2.png");
@@ -178,17 +150,13 @@ class PreloadAssets {
     _effects["rip"] = await Sprite.load("effects/rip.png");
 
     _furnitureList["bed1"] = await Sprite.load("furnitures/bed1.png");
-    _furnitureList["refrigerator"] =
-        await Sprite.load("furnitures/refrigerator.png");
+    _furnitureList["refrigerator"] = await Sprite.load("furnitures/refrigerator.png");
     _furnitureList["door1"] = await Sprite.load("furnitures/door1.png");
-    _furnitureList["door1_open"] =
-        await Sprite.load("furnitures/door1_open.png");
+    _furnitureList["door1_open"] = await Sprite.load("furnitures/door1_open.png");
     _furnitureList["door2"] = await Sprite.load("furnitures/door2.png");
-    _furnitureList["door2_open"] =
-        await Sprite.load("furnitures/door2_open.png");
+    _furnitureList["door2_open"] = await Sprite.load("furnitures/door2_open.png");
     _furnitureList["door3"] = await Sprite.load("furnitures/door3.png");
-    _furnitureList["door3_open"] =
-        await Sprite.load("furnitures/door3_open.png");
+    _furnitureList["door3_open"] = await Sprite.load("furnitures/door3_open.png");
 
     _uiSpriteList["foundation"] = await Sprite.load("ui/foundation.png");
     _uiSpriteList["wall"] = await Sprite.load("ui/wall.png");
@@ -252,6 +220,10 @@ class PreloadAssets {
 
   static Sprite getStomach() {
     return _stomach;
+  }
+
+  static Sprite getHuman() {
+    return _human;
   }
 
   static Sprite getStomachBack() {

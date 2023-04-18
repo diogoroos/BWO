@@ -1,4 +1,4 @@
-import '../../../entity/player/player.dart';
+import '../../../entities/player/player.dart';
 import '../../../map/map_controller.dart';
 import '../../external/datasources/socket_io_datasource.dart';
 import '../repositories/server_repository.dart';
@@ -42,8 +42,7 @@ class ServerController {
     _repo.setListener("onPlayerAttackEnemy", _pControl.onPlayerAttackEnemy);
     _repo.setListener("onEnemysWalk", _eControl.onEnemysWalk);
     _repo.setListener("onEnemysEnterScreen", _eControl.onEnemysEnterScreen);
-    _repo.setListener(
-        "onEnemyTargetingPlayer", _eControl.onEnemyTargetingPlayer);
+    _repo.setListener("onEnemyTargetingPlayer", _eControl.onEnemyTargetingPlayer);
     _repo.setListener("onTreeUpdate", _tControl.onTreeUpdate);
     _repo.setListener("onAddFoundation", _fControl.onFoundationEnterScreen);
   }
@@ -64,12 +63,7 @@ class ServerController {
   }
 
   void hitTree(int targetX, int targetY, int damage) async {
-    var jsonData = {
-      "name": "${player.name}",
-      "targetX": targetX,
-      "targetY": targetY,
-      "damage": damage
-    };
+    var jsonData = {"name": "${player.name}", "targetX": targetX, "targetY": targetY, "damage": damage};
     _repo.sendMessage("onTreeHit", jsonData);
   }
 

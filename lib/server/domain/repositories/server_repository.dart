@@ -1,4 +1,4 @@
-import '../../../entity/player/player.dart';
+import '../../../entities/player/player.dart';
 
 abstract class ServerRepository {
   void initializeClient(Player player, Function(String) callback);

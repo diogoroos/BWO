@@ -1,5 +1,5 @@
-import minimist from 'minimist';
 import extend from 'extend';
+import minimist from 'minimist';
 
 const args = minimist(process.argv.slice(2));
 
@@ -16,7 +16,7 @@ var common_conf = {
 
 //Enviroment Specific Configuration
 var conf = {
-    production:{
+    production: {
         ip: args.ip || "0.0.0.0",
         port: args.port || process.env.PORT || "3000",
         database_conf: {
@@ -26,20 +26,20 @@ var conf = {
         },
         database: 'production'
     },
-    development:{
-        ip: args.ip || "0.0.0.0",
+    development: {
+        ip: args.ip || "127.0.0.1",
         port: args.port || "3000",
         database_conf: {
-            apiKey: process.env.FIREBASE_PRIVATE_API_KEY,
-            authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-            databaseURL: process.env.FIREBASE_DATABASE_URL,
+            apiKey: "AIzaSyCEdnDrc0ObvNwJGXDQQUOG_GjVnBFez2I", //process.env.FIREBASE_PRIVATE_API_KEY,
+            authDomain: "game-rashyt.firebaseapp.com", //process.env.FIREBASE_AUTH_DOMAIN,
+            databaseURL: "game-rashyt.appspot.com", //process.env.FIREBASE_DATABASE_URL,
         },
-        database:'development'
+        database: 'development'
     },
-    localhost:{
+    localhost: {
         ip: args.ip || "0.0.0.0",
         port: args.port || "3000",
-        database:'localhost'
+        database: 'localhost'
     }
 }
 

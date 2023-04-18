@@ -1,5 +1,5 @@
-import '../../../../entity/enemys/enemy.dart';
-import '../../../../entity/player/player.dart';
+import '../../../../entities/enemys/enemy.dart';
+import '../../../../entities/player/player.dart';
 import '../../../../map/map_controller.dart';
 import '../../../../utils/timer_helper.dart';
 import '../../../utils/server_utils.dart';
@@ -31,9 +31,7 @@ class PlayerDataController {
         }
       } else {
         ServerUtils.addEntityIfNotExist(
-            _map,
-            Player(newX, newY, _map, name, playerId, null,
-                spriteFolder: sprite, isMine: false));
+            _map, Player(newX, newY, _map, name, playerId, null, spriteFolder: sprite, isMine: false));
       }
     });
     t.logDelayPassed('onPlayerEnterScreen:');
@@ -49,8 +47,7 @@ class PlayerDataController {
     var pId = user['playerId'].toString();
     var sprite = user['sprite'].toString();
 
-    var e = Player(newX, newY, _map, pName, pId, null,
-        spriteFolder: sprite, isMine: false);
+    var e = Player(newX, newY, _map, pName, pId, null, spriteFolder: sprite, isMine: false);
 
     ServerUtils.addEntityIfNotExist(_map, e);
     t.logDelayPassed('onAddPlayer:');
@@ -77,8 +74,7 @@ class PlayerDataController {
 
     var playerId = data['playerId'].toString();
 
-    var foundEntity = _map.entitysOnViewport
-        .firstWhere((element) => element.id == playerId, orElse: () => null);
+    var foundEntity = _map.entitysOnViewport.firstWhere((element) => element.id == playerId, orElse: () => null);
 
     if (foundEntity != null) {
       hp != null ? foundEntity.status.setLife(hp) : null;
@@ -106,8 +102,7 @@ class PlayerDataController {
 
     var pName = data['name'].toString();
 
-    var p = Player(newX, newY, _map, pName, pId, null,
-        spriteFolder: sprite, isMine: false);
+    var p = Player(newX, newY, _map, pName, pId, null, spriteFolder: sprite, isMine: false);
     p.xSpeed = xSpeed;
     p.ySpeed = ySpeed;
 
@@ -124,10 +119,8 @@ class PlayerDataController {
     var damage = int.parse(data['damage'].toString());
     var enemyHp = int.parse(data['enemyHp'].toString());
 
-    var enemyEntity = _map.entitysOnViewport
-        .firstWhere((element) => element.id == enemyId, orElse: () => null);
-    var playerEntity = _map.entitysOnViewport
-        .firstWhere((element) => element.id == playerId, orElse: () => null);
+    var enemyEntity = _map.entitysOnViewport.firstWhere((element) => element.id == enemyId, orElse: () => null);
+    var playerEntity = _map.entitysOnViewport.firstWhere((element) => element.id == playerId, orElse: () => null);
 
     if (enemyEntity is Enemy && playerEntity is Player) {
       playerEntity.currentSprite = playerEntity.attackSprites;

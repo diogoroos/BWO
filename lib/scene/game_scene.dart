@@ -2,8 +2,8 @@ import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 
-import '../entity/enemys/enemy.dart';
-import '../entity/player/player.dart';
+import '../entities/enemys/enemy.dart';
+import '../entities/player/player.dart';
 import '../game_controller.dart';
 import '../map/map_controller.dart';
 import '../server/domain/usecases/server_controller.dart';
@@ -14,17 +14,14 @@ import 'scene_object.dart';
 class GameScene extends SceneObject {
   static const int worldSize = 16;
 
-  TextPaint config = TextPaint(
-      style: TextStyle(
-          fontSize: 12.0, color: Colors.white, fontFamily: "Blocktopia"));
+  TextPaint config = TextPaint(style: TextStyle(fontSize: 12.0, color: Colors.white, fontFamily: "Blocktopia"));
 
   Player player;
   MapController mapController;
   PhysicsController physicsController;
   static ServerController serverController;
 
-  GameScene(String playerName, Offset startPosition, String spriteFolder,
-      int hp, int xp, int lv) {
+  GameScene(String playerName, Offset startPosition, String spriteFolder, int hp, int xp, int lv) {
     mapController = MapController(startPosition);
     serverController = ServerController(mapController);
 
@@ -54,31 +51,24 @@ class GameScene extends SceneObject {
         FlameAudio.bgm.play('recovery.mp3', volume: .2);
       }
     }
-    FlameAudio.audioCache
-        .loadAll(['footstep_grass1.mp3', 'footstep_grass2.mp3']);
+    FlameAudio.audioCache.loadAll(['footstep_grass1.mp3', 'footstep_grass2.mp3']);
   }
 
   @override
   void draw(Canvas c) {
-    var bgRect = Rect.fromLTWH(0, 0, GameController.screenSize.width,
-        GameController.screenSize.height);
+    var bgRect = Rect.fromLTWH(0, 0, GameController.screenSize.width, GameController.screenSize.height);
 
     if (player.id == null) return; //wait player log it
 
-    mapController.drawMap(c, player.x, player.y, bgRect,
-        movimentType: MovimentType.follow, tileSize: worldSize);
+    mapController.drawMap(c, player.x, player.y, bgRect, movimentType: MovimentType.follow, tileSize: worldSize);
 
-    config.render(
-        c, "FPS: ${getFps()}", Vector2(GameController.screenSize.width, 0),
-        anchor: Anchor.topRight);
+    config.render(c, "FPS: ${getFps()}", Vector2(GameController.screenSize.width, 0), anchor: Anchor.topRight);
 
     hud.draw(c);
   }
 
   int getFps() {
-    return (GameController.fps.isNaN || GameController.fps.isInfinite
-        ? 0
-        : GameController.fps.toInt());
+    return (GameController.fps.isNaN || GameController.fps.isInfinite ? 0 : GameController.fps.toInt());
   }
 
   @override

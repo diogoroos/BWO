@@ -1,7 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 
-import '../../../entity/wall/furniture.dart';
+import '../../../entities/wall/furniture.dart';
 import '../../../game_controller.dart';
 import '../../../map/map_controller.dart';
 import '../../../ui/hud.dart';
@@ -26,8 +26,7 @@ class BuildToolsFurniture extends BuildSubToolsBar {
   BuildToolsFurniture(this._map, this.toolsBar, HUD hudRef) {
     buttonList = [
       ToolItem("bed1", "Bed 1", hudRef, onPress, size: Vector2(2, 3)),
-      ToolItem("refrigerator", "Refrigerator", hudRef, onPress,
-          size: Vector2(2, 1)),
+      ToolItem("refrigerator", "Refrigerator", hudRef, onPress, size: Vector2(2, 1)),
     ];
   }
 
@@ -40,12 +39,10 @@ class BuildToolsFurniture extends BuildSubToolsBar {
     _furnitureBuild?.drawCollisionArea(c);
 
     if (GameController.tapState == TapState.pressing) {
-      var tapOnWorld =
-          TapState.screenToWorldPoint(TapState.currentPosition, _map) / 16;
+      var tapOnWorld = TapState.screenToWorldPoint(TapState.currentPosition, _map) / 16;
       var tapOnScreen = TapState.currentPosition;
 
-      var verticalBarButtons =
-          Rect.fromLTWH(0, GameController.screenSize.height - 235, 48, 235);
+      var verticalBarButtons = Rect.fromLTWH(0, GameController.screenSize.height - 235, 48, 235);
 
       if (tapOnScreen.dy < GameController.screenSize.height - 200 &&
           TapState.currentClickingAtInside(verticalBarButtons) == false) {
@@ -73,8 +70,8 @@ class BuildToolsFurniture extends BuildSubToolsBar {
     var x = posX - (width / 2.0).floor();
     var y = posY - (height / 2.0).floor();
 
-    var isValid = _map.buildFoundation.isValidAreaOnFoundation(
-        x.toDouble(), y.toDouble(), width.toDouble(), height.toDouble());
+    var isValid =
+        _map.buildFoundation.isValidAreaOnFoundation(x.toDouble(), y.toDouble(), width.toDouble(), height.toDouble());
 
     dynamic furnitureData = {
       'id': _selectedFurniture,

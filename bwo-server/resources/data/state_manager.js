@@ -8,16 +8,16 @@ export function isReady() { return firebase.isReady() }
 var config;
 export function setDatabaseConfig(mConfig) {
     config = mConfig;
-    
-    if(config.environment != 'localhost'){
+
+    if (config.environment != 'localhost') {
         firebase.setFirebaseConfig(mConfig);
     }
 }
 
 export function saveState(state) {
-    if(config.environment != 'localhost'){
+    if (config.environment != 'localhost') {
         firebase.saveState(state);
-    }else{
+    } else {
         localstore.saveState(state);
     }
 }
@@ -25,10 +25,10 @@ export function saveState(state) {
 export function loadState() {
     var defaulState = {}
 
-    if(config.environment != 'localhost'){
+    if (config.environment != 'localhost') {
         defaulState = firebase.loadState();
     }
-    else{
+    else {
         defaulState = localstore.loadState();
     }
     return defaulState;
@@ -37,10 +37,10 @@ export function loadState() {
 
 export function saveLog(tag, msg) {
 
-    if(config.environment != 'localhost'){
+    if (config.environment != 'localhost') {
         firebase.saveLog(tag, msg);
     }
-    else{
+    else {
         localstore.saveLog(tag, msg);
     }
 }
@@ -48,10 +48,10 @@ export function saveLog(tag, msg) {
 export function loadLog() {
     var defaultLogState = {}
 
-    if(config.environment != 'localhost'){
+    if (config.environment != 'localhost') {
         defaultLogState = firebase.loadLog();
     }
-    else{
+    else {
         defaultLogState = localstore.loadLog();
     }
     return defaultLogState;

@@ -43,9 +43,8 @@ class WaterStarsEffect {
     }
 
     for (var stars in starsOnWater) {
-      double alpha = (blinkStarsInitialColor.alpha.toDouble() / 255.0 -
-              GameController.deltaTime * animSpeed)
-          .clamp(0.0, 1.0);
+      double alpha =
+          (blinkStarsInitialColor.alpha.toDouble() / 255.0 - GameController.deltaTime * animSpeed).clamp(0.0, 1.0);
       blinkStarsInitialColor = Color.fromRGBO(
         blinkStarsInitialColor.red,
         blinkStarsInitialColor.green,
