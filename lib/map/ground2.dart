@@ -4,13 +4,13 @@ import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 
 import '../effects/foam_water_effect.dart';
-import '../effects/water_stars_effect.dart';
+import '../effects/water_stars_effect2.dart';
 import '../utils/preload_assets.dart';
 import '../utils/sprite_controller.dart';
 import 'tile2.dart';
 
 class Ground2 extends Tile2 {
-  WaterStarsEffect waterStarsEffect;
+  WaterStarsEffect2 waterStarsEffect;
   FoamWaterEffect foamWaterEffect;
   Sprite grass;
 
@@ -25,7 +25,7 @@ class Ground2 extends Tile2 {
     boxPaint.color = color != null ? color : tileColor;
 
     if (height < 107) {
-      waterStarsEffect = WaterStarsEffect(boxRect);
+      waterStarsEffect = WaterStarsEffect2(boxRect);
     }
     if (height >= 108 && height <= 110) {
       foamWaterEffect = FoamWaterEffect();
