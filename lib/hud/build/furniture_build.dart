@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../entities/wall/door.dart';
 import '../../entities/wall/furniture.dart';
-import '../../map/map_controller2.dart';
+import '../../map/map_controller.dart';
 import '../../utils/tap_state.dart';
 
 class FurnitureBuild {

@@ -1,5 +1,5 @@
 import '../../../entities/player/player.dart';
-import '../../../map/map_controller2.dart';
+import '../../../map/map_controller.dart';
 import '../../external/datasources/socket_io_datasource.dart';
 import '../repositories/server_repository.dart';
 import 'entities/enemy_data_controller.dart';

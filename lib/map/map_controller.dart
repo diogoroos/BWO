@@ -8,9 +8,9 @@ import '../entities/player/player.dart';
 import '../game_controller.dart';
 import '../hud/build/build_foundation.dart';
 import '../utils/timer_helper.dart';
-import 'ground2.dart';
-import 'tile2.dart';
-import 'tree2.dart';
+import 'ground.dart';
+import 'tile.dart';
+import 'tree.dart';
 
 class MapController {
   final Map<int, Map<int, Map<int, Tile>>> map = {};
@@ -127,7 +127,7 @@ class MapController {
             if (map[y][x] == null) {
               map[y][x] = {0: null}; //initialize line
             }
-            map[y][x][0] = Ground2(x, y, tileHeight, tileSize, null);
+            map[y][x][0] = Ground(x, y, tileHeight, tileSize, null);
             tilesGenerated++;
             _loopsPerCycle++;
 
@@ -186,13 +186,13 @@ class MapController {
         treesGenerated++;
 
         if (y % 5 == 0) {
-          entityList.add(Tree2(this, x, y, tileSize, "tree04"));
+          entityList.add(Tree(this, x, y, tileSize, "tree04"));
         } else if (y % 6 == 0) {
-          entityList.add(Tree2(this, x, y, tileSize, "tree02"));
+          entityList.add(Tree(this, x, y, tileSize, "tree02"));
         } else if (y % 7 == 0) {
-          entityList.add(Tree2(this, x, y, tileSize, "tree03"));
+          entityList.add(Tree(this, x, y, tileSize, "tree03"));
         } else {
-          entityList.add(Tree2(this, x, y, tileSize, "tree01"));
+          entityList.add(Tree(this, x, y, tileSize, "tree01"));
         }
       }
     }

@@ -1,6 +1,6 @@
 import '../../../../entities/enemys/enemy.dart';
 import '../../../../entities/player/player.dart';
-import '../../../../map/map_controller2.dart';
+import '../../../../map/map_controller.dart';
 import '../../../../utils/timer_helper.dart';
 import '../../../utils/server_utils.dart';
 

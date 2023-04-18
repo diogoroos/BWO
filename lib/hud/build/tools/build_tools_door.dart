@@ -2,7 +2,7 @@ import 'package:flame/extensions.dart';
 
 import '../../../entities/wall/door.dart';
 import '../../../game_controller.dart';
-import '../../../map/map_controller2.dart';
+import '../../../map/map_controller.dart';
 import '../../../ui/hud.dart';
 import '../../../utils/tap_state.dart';
 import '../build_subtools_bar.dart';

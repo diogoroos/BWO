@@ -4,7 +4,7 @@ import 'package:flame/sprite.dart';
 import '../../entities/player/player.dart';
 import '../../entities/wall/wall.dart';
 import '../../game_controller.dart';
-import '../../map/map_controller2.dart';
+import '../../map/map_controller.dart';
 import '../../ui/hud.dart';
 import '../../ui/ui_element.dart';
 import '../../utils/sprite_controller.dart';

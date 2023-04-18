@@ -1,5 +1,5 @@
 import '../../../../hud/build/build_foundation.dart';
-import '../../../../map/map_controller2.dart';
+import '../../../../map/map_controller.dart';
 import '../../../../utils/timer_helper.dart';
 
 class FoundationDataController {

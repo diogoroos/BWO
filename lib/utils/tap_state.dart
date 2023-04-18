@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import '../game_controller.dart';
-import '../map/map_controller2.dart';
+import '../map/map_controller.dart';
 import '../ui/keyboard/keyboard_ui.dart';
 import '../ui/ui_element.dart';
 

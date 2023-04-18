@@ -7,9 +7,9 @@ import '../effects/foam_water_effect.dart';
 import '../effects/water_stars_effect2.dart';
 import '../utils/preload_assets.dart';
 import '../utils/sprite_controller.dart';
-import 'tile2.dart';
+import 'tile.dart';
 
-class Ground2 extends Tile {
+class Ground extends Tile {
   WaterStarsEffect waterStarsEffect;
   FoamWaterEffect foamWaterEffect;
   Sprite grass;
@@ -20,7 +20,7 @@ class Ground2 extends Tile {
   static const sand = 118;
   static const lowGrass = 140;
 
-  Ground2(int posX, int posY, int height, int size, Color color) : super(posX, posY, height, size, color) {
+  Ground(int posX, int posY, int height, int size, Color color) : super(posX, posY, height, size, color) {
     var tileColor = getTileDetailsBasedOnHight(this.height);
     boxPaint.color = color != null ? color : tileColor;
 

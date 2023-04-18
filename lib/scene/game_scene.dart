@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../entities/enemys/enemy.dart';
 import '../entities/player/player.dart';
 import '../game_controller.dart';
-import '../map/map_controller2.dart';
+import '../map/map_controller.dart';
 import '../server/domain/usecases/server_controller.dart';
 import '../server/utils/server_utils.dart';
 import '../utils/physics_controller.dart';

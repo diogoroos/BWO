@@ -2,9 +2,9 @@ import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 
 import '../../entities/player/player.dart';
-import '../../map/ground2.dart';
-import '../../map/map_controller2.dart';
-import '../../map/tile2.dart';
+import '../../map/ground.dart';
+import '../../map/map_controller.dart';
+import '../../map/tile.dart';
 import '../../scene/game_scene.dart';
 import '../../utils/tap_state.dart';
 import 'Roof.dart';
@@ -133,7 +133,7 @@ class Foundation {
       var posX = x.floor();
       var posY = y.floor();
 
-      var t = Tile(posX, posY, Ground2.lowGrass, 16, null, tileSpritePath: 'floor$imgId', idImg: imgId);
+      var t = Tile(posX, posY, Ground.lowGrass, 16, null, tileSpritePath: 'floor$imgId', idImg: imgId);
       tileList['_${posX}_$posY'] = t;
 
       if (_map.map[posY] == null) {

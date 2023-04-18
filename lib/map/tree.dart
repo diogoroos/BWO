@@ -11,9 +11,9 @@ import '../entities/items/items.dart';
 import '../game_controller.dart';
 import '../scene/game_scene.dart';
 import '../utils/preload_assets.dart';
-import 'map_controller2.dart';
+import 'map_controller.dart';
 
-class Tree2 extends Entity {
+class Tree extends Entity {
   final int _tileSize;
   SpriteBatch _tree;
   final String _spriteImage;
@@ -32,7 +32,7 @@ class Tree2 extends Entity {
   final MapController _map;
   double _deleteTime = double.infinity;
 
-  Tree2(this._map, int posX, int posY, this._tileSize, this._spriteImage)
+  Tree(this._map, int posX, int posY, this._tileSize, this._spriteImage)
       : super((posX.toDouble() * GameScene.worldSize), (posY.toDouble() * GameScene.worldSize)) {
     id = '_${x.toInt()}_${y.toInt()}';
 

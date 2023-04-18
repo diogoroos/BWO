@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../map/map_controller2.dart';
+import '../../map/map_controller.dart';
 import 'enemy.dart';
 
 class Skull extends Enemy {

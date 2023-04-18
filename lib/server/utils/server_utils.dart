@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../entities/enemys/enemy.dart';
 import '../../entities/entity.dart';
 import '../../entities/player/player.dart';
-import '../../map/map_controller2.dart';
+import '../../map/map_controller.dart';
 
 class ServerUtils {
   //static const String server = "https://3000-e92204fd-e411-4285-8fd3-cf3515d1c358.ws-us02.gitpod.io";
