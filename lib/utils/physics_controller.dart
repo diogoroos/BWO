@@ -3,10 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../entities/player/player.dart';
-import '../map/map_controller.dart';
+import '../map/map_controller2.dart';
 
 class PhysicsController {
-  final MapController _map;
+  final MapController2 _map;
 
   PhysicsController(this._map);
 

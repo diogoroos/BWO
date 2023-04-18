@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../effects/damage_effect.dart';
 import '../effects/ripple_water_effect.dart';
-import '../effects/walk_effect.dart';
+import '../effects/walk_effect2.dart';
 import '../entities/player/player.dart';
 import '../scene/game_scene.dart';
 import '../utils/preload_assets.dart';
@@ -41,7 +41,7 @@ abstract class Entity extends PhysicsEntity {
   Sprite shadownLarge;
   Offset shadownOffset = Offset.zero;
   final RippleWaterEffect _rippleWaterEffect = RippleWaterEffect();
-  final WalkEffect _walkEffect = WalkEffect();
+  final WalkEffect2 _walkEffect = WalkEffect2();
   final DamageEffect _damageEffect = DamageEffect();
 
   Entity(double x, double y) : super(x, y) {

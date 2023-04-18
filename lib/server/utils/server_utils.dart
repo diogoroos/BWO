@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../entities/enemys/enemy.dart';
 import '../../entities/entity.dart';
 import '../../entities/player/player.dart';
-import '../../map/map_controller.dart';
+import '../../map/map_controller2.dart';
 
 class ServerUtils {
   //static const String server = "https://3000-e92204fd-e411-4285-8fd3-cf3515d1c358.ws-us02.gitpod.io";
@@ -14,7 +14,7 @@ class ServerUtils {
   static const String database = 'development'; // production | development
   static const bool isOffline = true;
 
-  static void addEntityIfNotExist(MapController map, Entity newEntity, {bool updateIfExist = true}) {
+  static void addEntityIfNotExist(MapController2 map, Entity newEntity, {bool updateIfExist = true}) {
     var foundEntity = map.entityList.firstWhere((element) => element.id == newEntity.id, orElse: () => null);
 
     if (foundEntity == null) {

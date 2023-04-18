@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../../game_controller.dart';
-import '../../../map/map_controller.dart';
+import '../../../map/map_controller2.dart';
 import '../../../ui/hud.dart';
 import '../../../utils/tap_state.dart';
 import '../build_subtools_bar.dart';
 import '../tool_item.dart';
 
 class BuildToolsFloors extends BuildSubToolsBar {
-  final MapController _map;
+  final MapController2 _map;
 
   int selectedFloor = -1;
 
@@ -39,8 +39,7 @@ class BuildToolsFloors extends BuildSubToolsBar {
     if (GameController.tapState == TapState.pressing) {
       var tapOnScreen = TapState.currentPosition;
 
-      if (tapOnScreen.dy < GameController.screenSize.height - 200 &&
-          tapOnScreen.dx > 48) {
+      if (tapOnScreen.dy < GameController.screenSize.height - 200 && tapOnScreen.dx > 48) {
         placeFloor();
       }
     }

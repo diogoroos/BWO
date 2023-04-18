@@ -5,15 +5,15 @@ import 'package:flame/extensions.dart';
 import 'package:flame/sprite.dart';
 import 'package:flame_audio/flame_audio.dart';
 
-import '../entity/entity.dart';
-import '../entity/items/item_database.dart';
-import '../entity/items/items.dart';
+import '../entities/entity.dart';
+import '../entities/items/item_database.dart';
+import '../entities/items/items.dart';
 import '../game_controller.dart';
 import '../scene/game_scene.dart';
 import '../utils/preload_assets.dart';
-import 'map_controller.dart';
+import 'map_controller2.dart';
 
-class Tree extends Entity {
+class Tree2 extends Entity {
   final int _tileSize;
   SpriteBatch _tree;
   final String _spriteImage;
@@ -29,12 +29,11 @@ class Tree extends Entity {
   double _deadRotation = 0;
   double _gravityRotation = 0;
 
-  final MapController _map;
+  final MapController2 _map;
   double _deleteTime = double.infinity;
 
-  Tree(this._map, int posX, int posY, this._tileSize, this._spriteImage)
-      : super((posX.toDouble() * GameScene.worldSize),
-            (posY.toDouble() * GameScene.worldSize)) {
+  Tree2(this._map, int posX, int posY, this._tileSize, this._spriteImage)
+      : super((posX.toDouble() * GameScene.worldSize), (posY.toDouble() * GameScene.worldSize)) {
     id = '_${x.toInt()}_${y.toInt()}';
 
     width = 2.0 * _tileSize;
@@ -53,8 +52,7 @@ class Tree extends Entity {
     _tree = PreloadAssets.getTreeSprite(_spriteImage);
     _tree.add(
         source: Rect.fromLTWH(0, 0, 16, 16),
-        offset: Vector2(
-            posX.toDouble() * _tileSize, (posY.toDouble() - 1) * _tileSize),
+        offset: Vector2(posX.toDouble() * _tileSize, (posY.toDouble() - 1) * _tileSize),
         anchor: Vector2(8, 14),
         scale: _tileSize.toDouble(),
         rotation: 0 //-0.05
@@ -103,8 +101,7 @@ class Tree extends Entity {
   }
 
   void _chopDownTree() {
-    _gravityRotation +=
-        (GameController.deltaTime * .04) + (_gravityRotation.abs()) * 0.06;
+    _gravityRotation += (GameController.deltaTime * .04) + (_gravityRotation.abs()) * 0.06;
 
     _deadRotation += _gravityRotation;
 
@@ -133,8 +130,7 @@ class Tree extends Entity {
     _tree.clear();
     _tree.add(
         source: Rect.fromLTWH(0, 0, 16, 16),
-        offset: Vector2(
-            posX.toDouble() * _tileSize, (posY.toDouble() - 1) * _tileSize),
+        offset: Vector2(posX.toDouble() * _tileSize, (posY.toDouble() - 1) * _tileSize),
         anchor: Vector2(8, 14),
         scale: _tileSize.toDouble(),
         rotation: rot //-0.05
@@ -184,10 +180,10 @@ class Tree extends Entity {
     }
   }
 
-  Item _dropApple() {
+  Items _dropApple() {
     if (Random().nextInt(100) < 3 && _applesLeft > 0) {
       _applesLeft--;
-      return Item(x - 32, y, 100, itemListDatabase[0]);
+      return Items(x - 32, y, 100, itemListDatabase[0]);
     }
     return null;
   }
@@ -200,7 +196,7 @@ class Tree extends Entity {
       var rPosY = y + Random().nextInt(50).toDouble() - 25;
       var zPosZ = Random().nextInt(30).toDouble() + 10;
 
-      _map.addEntity(Item(rPosX, rPosY, zPosZ, itemListDatabase[1]));
+      _map.addEntity(Items(rPosX, rPosY, zPosZ, itemListDatabase[1]));
     }
   }
 }

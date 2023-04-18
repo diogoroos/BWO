@@ -15,7 +15,7 @@ import '../../hud/build/build_foundation.dart';
 import '../../hud/build/build_hud.dart';
 import '../../hud/inventory.dart';
 import '../../hud/player_hud.dart';
-import '../../map/map_controller.dart';
+import '../../map/map_controller2.dart';
 import '../../scene/scene_object.dart';
 import '../../utils/on_animation_end.dart';
 import '../../utils/preload_assets.dart';
@@ -32,7 +32,7 @@ class Player extends Entity implements OnAnimationEnd {
 
   PlayerActions playerActions;
   InputController _inputController;
-  final MapController _map;
+  final MapController2 _map;
 
   Inventory _inventory;
   // ignore: unused_field

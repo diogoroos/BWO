@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import '../game_controller.dart';
-import '../map/map_controller.dart';
+import '../map/map_controller2.dart';
 import '../ui/keyboard/keyboard_ui.dart';
 import '../ui/ui_element.dart';
 
@@ -21,18 +21,15 @@ class TapState {
   //static Offset localPosition = Offset(0, 0);
 
   static bool isTapingLeft() {
-    return GameController.tapState == pressing &&
-        pressedPosition.dx < GameController.screenSize.width / 2;
+    return GameController.tapState == pressing && pressedPosition.dx < GameController.screenSize.width / 2;
   }
 
   static bool isTapingRight() {
-    return GameController.tapState == pressing &&
-        pressedPosition.dx > GameController.screenSize.width / 2;
+    return GameController.tapState == pressing && pressedPosition.dx > GameController.screenSize.width / 2;
   }
 
   static bool isTapingBottom() {
-    return GameController.tapState == pressing &&
-        pressedPosition.dy > GameController.screenSize.height / 2;
+    return GameController.tapState == pressing && pressedPosition.dy > GameController.screenSize.height / 2;
   }
 
   static bool instersect(Rect r) {
@@ -66,10 +63,7 @@ class TapState {
         }
       }
     }
-    return (instersect(button.bounds) &&
-        GameController.tapState == down &&
-        isAboveAllElements &&
-        !KeyboardUI.isEnable);
+    return (instersect(button.bounds) && GameController.tapState == down && isAboveAllElements && !KeyboardUI.isEnable);
   }
 
   static bool currentClickingAt(Rect r) {
@@ -84,17 +78,15 @@ class TapState {
 
   static Offset deltaPositionFromStart({double limit = double.infinity}) {
     var offset = pressedPosition - currentPosition;
-    return Offset(
-        offset.dx.clamp(-limit, limit), offset.dy.clamp(-limit, limit));
+    return Offset(offset.dx.clamp(-limit, limit), offset.dy.clamp(-limit, limit));
   }
 
   static Offset deltaPosition() {
-    lastPosition = Offset.lerp(
-        lastPosition, currentPosition, GameController.deltaTime * 4);
+    lastPosition = Offset.lerp(lastPosition, currentPosition, GameController.deltaTime * 4);
     return lastPosition - currentPosition;
   }
 
-  static Offset screenToWorldPoint(Offset point, MapController map) {
+  static Offset screenToWorldPoint(Offset point, MapController2 map) {
     var midBorder = (map.border) * 16;
     var mapPos = Offset(map.posX - midBorder, map.posY - midBorder);
 
@@ -102,7 +94,7 @@ class TapState {
     return tap;
   }
 
-  static Offset worldToScreenPoint(MapController map) {
+  static Offset worldToScreenPoint(MapController2 map) {
     var midBorder = (map.border) * 16;
     var tap = Offset(map.posX - midBorder, map.posY - midBorder);
 

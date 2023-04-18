@@ -2,9 +2,9 @@ import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 
 import '../../entities/player/player.dart';
-import '../../map/ground.dart';
-import '../../map/map_controller.dart';
-import '../../map/tile.dart';
+import '../../map/ground2.dart';
+import '../../map/map_controller2.dart';
+import '../../map/tile2.dart';
 import '../../scene/game_scene.dart';
 import '../../utils/tap_state.dart';
 import 'Roof.dart';
@@ -13,13 +13,13 @@ import 'furniture.dart';
 import 'wall.dart';
 
 class Foundation {
-  final MapController _map;
+  final MapController2 _map;
   final Player _player;
   double left, top, width, height;
   dynamic foundationData;
   //final List<Wall> wallList = [];
   final Map<String, Wall> wallList = {};
-  final Map<String, Tile> tileList = {};
+  final Map<String, Tile2> tileList = {};
   final Map<String, Furniture> furnitureList = {};
   Roof roof = Roof();
   bool isValidTerrain = true;
@@ -133,7 +133,7 @@ class Foundation {
       var posX = x.floor();
       var posY = y.floor();
 
-      var t = Tile(posX, posY, Ground.lowGrass, 16, null, tileSpritePath: 'floor$imgId', idImg: imgId);
+      var t = Tile2(posX, posY, Ground2.lowGrass, 16, null, tileSpritePath: 'floor$imgId', idImg: imgId);
       tileList['_${posX}_$posY'] = t;
 
       if (_map.map[posY] == null) {

@@ -1,12 +1,12 @@
 import '../../../../entities/enemys/enemy.dart';
 import '../../../../entities/player/player.dart';
-import '../../../../map/map_controller.dart';
+import '../../../../map/map_controller2.dart';
 import '../../../../utils/timer_helper.dart';
 import '../../../utils/server_utils.dart';
 
 class PlayerDataController {
   final Player _player;
-  final MapController _map;
+  final MapController2 _map;
 
   bool firstMove = true;
 

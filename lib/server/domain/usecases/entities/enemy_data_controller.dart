@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../../../entities/enemys/skull.dart';
 import '../../../../entities/enemys/enemy.dart';
-import '../../../../map/map_controller.dart';
+import '../../../../entities/enemys/skull.dart';
+import '../../../../map/map_controller2.dart';
 import '../../../../utils/timer_helper.dart';
 import '../../../utils/server_utils.dart';
 
 class EnemyDataController {
   //final Player _player;
-  final MapController _map;
+  final MapController2 _map;
 
   EnemyDataController(this._map);
 
@@ -103,7 +103,7 @@ class EnemyDataController {
     t.logDelayPassed('onEnemyTargetingPlayer:');
   }
 
-  void deleteEnemyFromList(MapController _map, List<dynamic> spawnedEntitys) {
+  void deleteEnemyFromList(MapController2 _map, List<dynamic> spawnedEntitys) {
     var t = TimerHelper();
     for (var entityOnMap in _map.entitysOnViewport) {
       if (entityOnMap is Enemy) {

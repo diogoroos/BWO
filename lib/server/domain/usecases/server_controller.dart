@@ -1,5 +1,5 @@
 import '../../../entities/player/player.dart';
-import '../../../map/map_controller.dart';
+import '../../../map/map_controller2.dart';
 import '../../external/datasources/socket_io_datasource.dart';
 import '../repositories/server_repository.dart';
 import 'entities/enemy_data_controller.dart';
@@ -8,7 +8,7 @@ import 'entities/player_data_controller.dart';
 import 'entities/tree_data_controller.dart';
 
 class ServerController {
-  MapController map;
+  MapController2 map;
   Player player;
 
   ServerRepository _repo;

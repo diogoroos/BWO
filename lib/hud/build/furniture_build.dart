@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../entities/wall/door.dart';
 import '../../entities/wall/furniture.dart';
-import '../../map/map_controller.dart';
+import '../../map/map_controller2.dart';
 import '../../utils/tap_state.dart';
 
 class FurnitureBuild {
@@ -12,7 +12,7 @@ class FurnitureBuild {
   Rect bounds = Rect.zero;
 
   bool isValidTerrain = false;
-  final MapController _map;
+  final MapController2 _map;
 
   dynamic furnitureData;
   String furnitureId;

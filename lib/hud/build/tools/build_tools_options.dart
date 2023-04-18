@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../../game_controller.dart';
-import '../../../map/map_controller.dart';
+import '../../../map/map_controller2.dart';
 import '../../../ui/hud.dart';
 import '../../../utils/tap_state.dart';
 import '../build_subtools_bar.dart';
 import '../tool_item.dart';
 
 class BuildToolsOptions extends BuildSubToolsBar {
-  final MapController _map;
+  final MapController2 _map;
 
   String btSelected;
 
@@ -24,8 +24,7 @@ class BuildToolsOptions extends BuildSubToolsBar {
   void draw(Canvas c) {
     super.draw(c);
 
-    if (GameController.tapState == TapState.pressing &&
-        btSelected == 'Delete Wall') {
+    if (GameController.tapState == TapState.pressing && btSelected == 'Delete Wall') {
       deleteWall();
     }
   }

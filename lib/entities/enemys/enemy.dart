@@ -4,7 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 
 import '../../game_controller.dart';
-import '../../map/map_controller.dart';
+import '../../map/map_controller2.dart';
 import '../../utils/on_animation_end.dart';
 import '../../utils/sprite_controller.dart';
 import '../entity.dart';
@@ -12,7 +12,7 @@ import 'ia_controller.dart';
 import 'ia_network_controller.dart';
 
 class Enemy extends Entity implements OnAnimationEnd {
-  MapController map;
+  MapController2 map;
   IAController iaController;
   bool respawn = false;
   double respawnTime = 0;

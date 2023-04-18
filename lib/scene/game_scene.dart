@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../entities/enemys/enemy.dart';
 import '../entities/player/player.dart';
 import '../game_controller.dart';
-import '../map/map_controller.dart';
+import '../map/map_controller2.dart';
 import '../server/domain/usecases/server_controller.dart';
 import '../server/utils/server_utils.dart';
 import '../utils/physics_controller.dart';
@@ -17,12 +17,12 @@ class GameScene extends SceneObject {
   TextPaint config = TextPaint(style: TextStyle(fontSize: 12.0, color: Colors.white, fontFamily: "Blocktopia"));
 
   Player player;
-  MapController mapController;
+  MapController2 mapController;
   PhysicsController physicsController;
   static ServerController serverController;
 
   GameScene(String playerName, Offset startPosition, String spriteFolder, int hp, int xp, int lv) {
-    mapController = MapController(startPosition);
+    mapController = MapController2(startPosition);
     serverController = ServerController(mapController);
 
     physicsController = PhysicsController(mapController);

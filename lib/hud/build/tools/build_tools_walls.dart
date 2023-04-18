@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../../game_controller.dart';
-import '../../../map/map_controller.dart';
+import '../../../map/map_controller2.dart';
 import '../../../ui/hud.dart';
 import '../../../utils/tap_state.dart';
 import '../build_subtools_bar.dart';
 import '../tool_item.dart';
 
 class BuildToolsWall extends BuildSubToolsBar {
-  final MapController _map;
+  final MapController2 _map;
 
   int selectedWall = -1;
 
@@ -38,8 +38,7 @@ class BuildToolsWall extends BuildSubToolsBar {
     if (GameController.tapState == TapState.pressing) {
       var tapOnScreen = TapState.currentPosition;
 
-      var verticalBarButtons =
-          Rect.fromLTWH(0, GameController.screenSize.height - 235, 48, 235);
+      var verticalBarButtons = Rect.fromLTWH(0, GameController.screenSize.height - 235, 48, 235);
 
       if (tapOnScreen.dy < GameController.screenSize.height - 200 &&
           TapState.currentClickingAtInside(verticalBarButtons) == false) {

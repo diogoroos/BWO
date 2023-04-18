@@ -1,9 +1,9 @@
 import '../../../../entities/player/player.dart';
-import '../../../../map/map_controller.dart';
-import '../../../../map/tree.dart';
+import '../../../../map/map_controller2.dart';
+import '../../../../map/tree2.dart';
 
 class TreeDataController {
-  MapController map;
+  MapController2 map;
 
   TreeDataController(this.map);
 
@@ -32,7 +32,7 @@ class TreeDataController {
 
       //Set the tree health
       var foundTree = map.entitysOnViewport.firstWhere((element) => element.id == treeId, orElse: () => null);
-      if (foundTree != null && foundTree is Tree) {
+      if (foundTree != null && foundTree is Tree2) {
         if (hp != null) {
           if (damage != null) {
             //take damage

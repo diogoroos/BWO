@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../entities/enemys/enemy.dart';
 import '../../entities/player/player.dart';
 import '../../hud/build/build_hud.dart';
-import '../../map/map_controller.dart';
-import '../../map/tree.dart';
+import '../../map/map_controller2.dart';
+import '../../map/tree2.dart';
 import '../../utils/tap_state.dart';
 
 // import '../enemys/enemy.dart';
@@ -15,7 +15,7 @@ class PlayerActions {
 
   bool isDoingAction = false;
 
-  void interactWithTrees(MapController map) {
+  void interactWithTrees(MapController2 map) {
     if (!player.isMine) {
       return;
     }
@@ -29,7 +29,7 @@ class PlayerActions {
         var distance = (Offset(player.x, player.y) - target).distance;
 
         if (distance <= 3.0 * player.worldSize && isDoingAction == false) {
-          if (entity is Tree && entity.status.isAlive()) {
+          if (entity is Tree2 && entity.status.isAlive()) {
             isDoingAction = true;
 
             if (player.currentSprite != player.attackSprites) {

@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import '../../entities/player/player.dart';
 import '../../game_controller.dart';
-import '../../map/map_controller.dart';
+import '../../map/map_controller2.dart';
 import '../../ui/hud.dart';
 import '../../ui/ui_element.dart';
 import 'build_subtools_bar.dart';
@@ -17,7 +17,7 @@ import 'tools/build_tools_walls.dart';
 class BuildToolsBar extends UIElement {
   final Paint _p = Paint();
   final Player _player;
-  final MapController _map;
+  final MapController2 _map;
 
   double _boxHeight = -72;
   double _heightTarget = -72;

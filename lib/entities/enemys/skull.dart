@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 
-import '../../map/map_controller.dart';
+import '../../map/map_controller2.dart';
 import 'enemy.dart';
 
 class Skull extends Enemy {
-  Skull(double x, double y, MapController map, String name, String id, {Offset moveTo = Offset.zero})
+  Skull(double x, double y, MapController2 map, String name, String id, {Offset moveTo = Offset.zero})
       : super(x, y, map, "enemys/miniskull", id) {
     iaController.walkSpeed = 1;
 

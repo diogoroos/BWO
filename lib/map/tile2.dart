@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../utils/preload_assets.dart';
 import '../utils/sprite_controller.dart';
 
-class Tile {
+class Tile2 {
   int posX;
   int posY;
   int size = 15;
@@ -22,8 +22,7 @@ class Tile {
   int idImg;
   Sprite tileSprite;
 
-  Tile(this.posX, this.posY, this.height, this.size, this.color,
-      {this.tileSpritePath, this.idImg}) {
+  Tile2(this.posX, this.posY, this.height, this.size, this.color, {this.tileSpritePath, this.idImg}) {
     boxRect = Rect.fromLTWH(
       posX.toDouble() * size.toDouble(),
       posY.toDouble() * size.toDouble(),
@@ -41,9 +40,7 @@ class Tile {
 
   void draw(Canvas c) {
     c.drawRect(boxRect, boxPaint);
-    tileSprite?.render(c,
-        position: Vector2(boxRect.left, boxRect.top),
-        size: Vector2.all(SpriteController.spriteSize));
+    tileSprite?.render(c, position: Vector2(boxRect.left, boxRect.top), size: Vector2.all(SpriteController.spriteSize));
   }
 
   dynamic toObject() {

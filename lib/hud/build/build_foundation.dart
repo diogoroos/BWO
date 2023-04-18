@@ -9,9 +9,9 @@ import '../../entities/player/player.dart';
 import '../../entities/wall/door.dart';
 import '../../entities/wall/foundation.dart';
 import '../../entities/wall/furniture.dart';
-import '../../map/ground.dart';
-import '../../map/map_controller.dart';
-import '../../map/tree.dart';
+import '../../map/ground2.dart';
+import '../../map/map_controller2.dart';
+import '../../map/tree2.dart';
 import '../../server/utils/server_utils.dart';
 import '../../utils/tap_state.dart';
 import '../../utils/timer_helper.dart';
@@ -24,7 +24,7 @@ import 'build_hud.dart';
 
 class BuildFoundation {
   final Player _player;
-  final MapController _map;
+  final MapController2 _map;
 
   List<Foundation> foundationList = [];
   Foundation myFoundation;
@@ -103,7 +103,7 @@ class BuildFoundation {
   List<dynamic> getAmountOfTreesAround(int left, int top, int w, int h) {
     var treeList = [];
     for (var entity in _map.entitysOnViewport) {
-      if (entity is Tree) {
+      if (entity is Tree2) {
         if (entity.posX >= left &&
             entity.posY >= top &&
             entity.posX <= left + w &&
@@ -125,7 +125,7 @@ class BuildFoundation {
         var isValidTile = _map.map[y] != null ? _map.map[y][x] != null : false;
         if (!isValidTile) return false;
 
-        if (_map.map[y][x][0].height < Ground.lowWater) {
+        if (_map.map[y][x][0].height < Ground2.lowWater) {
           return true;
         }
       }

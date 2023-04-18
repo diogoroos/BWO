@@ -6,12 +6,12 @@ import 'package:flame/extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../game_controller.dart';
-import '../map/ground.dart';
+import '../map/ground2.dart';
 import '../server/utils/server_utils.dart';
 import '../utils/preload_assets.dart';
 import '../utils/sprite_controller.dart';
 
-class WalkEffect {
+class WalkEffect2 {
   double animSpeed = 1;
   double timeInFuture = 0;
   double timeInFutureForGrass = 0;
@@ -21,7 +21,7 @@ class WalkEffect {
 
   List<GrassFX> grassAnimList = [];
 
-  WalkEffect() {
+  WalkEffect2() {
     timeInFuture = GameController.time + 5;
     timeInFutureForGrass = GameController.time + 5;
   }
@@ -30,18 +30,18 @@ class WalkEffect {
     var velocity = max(walkSpeed.dx.abs(), walkSpeed.dy.abs());
 
     if (velocity > 0) {
-      height < Ground.water ? playStepSFX(velocity, "swim_1.mp3", .8, interval: .9) : null;
-      height >= Ground.water && height <= Ground.lowWater - 9
+      height < Ground2.water ? playStepSFX(velocity, "swim_1.mp3", .8, interval: .9) : null;
+      height >= Ground2.water && height <= Ground2.lowWater - 9
           ? playStepSFX(velocity, "footstep_water_splash.mp3", .3)
           : null;
-      height >= Ground.water + 9 && height <= Ground.lowWater
+      height >= Ground2.water + 9 && height <= Ground2.lowWater
           ? playStepSFX(velocity, "footstep_water_splash2.mp3", .4)
           : null;
-      height >= Ground.lowSand && height <= Ground.sand ? addSmokeFX(velocity, x, y) : null;
-      height >= Ground.lowSand && height <= Ground.sand ? playStepSFX(velocity, "footstep_sand_beech.mp3", .3) : null;
-      height >= Ground.sand && height <= Ground.lowGrass ? playStepSFX(velocity, "footstep_grass2.mp3", .03) : null;
-      height >= Ground.lowGrass ? playStepSFX(velocity, "footstep_grass1.mp3", .2) : null;
-      height > Ground.lowGrass ? addGrassFX(velocity, x, y) : null;
+      height >= Ground2.lowSand && height <= Ground2.sand ? addSmokeFX(velocity, x, y) : null;
+      height >= Ground2.lowSand && height <= Ground2.sand ? playStepSFX(velocity, "footstep_sand_beech.mp3", .3) : null;
+      height >= Ground2.sand && height <= Ground2.lowGrass ? playStepSFX(velocity, "footstep_grass2.mp3", .03) : null;
+      height >= Ground2.lowGrass ? playStepSFX(velocity, "footstep_grass1.mp3", .2) : null;
+      height > Ground2.lowGrass ? addGrassFX(velocity, x, y) : null;
     }
 
     for (var effect in smokeEffects) {
